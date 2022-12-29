@@ -9,7 +9,7 @@
     "model": "VW e-Up 1. generácia",
     "description": "Malé mestské vozidlo, ideálne na krátke trasy a nenáročné používanie. Vcelku dobre vybavené. Vyhľadávaná jazdenka.",
     "image_source_description": "obrázky sú v jednom adresári a sú prekonvertované na webp formát (úspora dát) a veľkostne upravené na šírku 600px, s tým sa ráta. Nie sú dajako extra potrebné aby boli kvalitné, táto databáza nie je obrázková galéria, o to mi nešlo...",
-    "img_source": "./pictures/batch_e-up_1.webp",
+    "img_source": "./pictures/batch_vw_e-Up1.webp",
     "production": false,
     "ac_charging": {
       "value_min": 3.6,
@@ -327,7 +327,7 @@
     "brand": "VW",
     "model": "VW e-Up 2. generácia",
     "description": "Druhá generácia malého mestského vozidla od VW. Hlavné vylepšenie je batéria s dvojnásobnou kapacitou (viac info je detailoch).",
-    "img_source": "./pictures/batch_VW-e-up-1.webp",
+    "img_source": "./pictures/batch_vw_e-Up2.webp",
     "production": false,
     "ac_charging": {
       "value_min": 7.4,
@@ -424,7 +424,7 @@
     "brand": "Škoda",
     "model": "Škoda CitiGo iV",
     "description": "Malý model od Škody pre mesto a okolie, v podstate (technicky) zhodný s modelom e-Up (2. generácie) od VW.",
-    "img_source": "./pictures/batch_citigo.webp",
+    "img_source": "./pictures/batch_skoda_citigo.webp",
     "production": false,
     "ac_charging": {
       "value_min": 7.4,
@@ -472,7 +472,7 @@
     "brand": "Citroen",
     "model": "Citroen C-Zero<br>(obe generácie)",
     "description": "Malé mestské vozidlo, ideálne na krátke trasy a nenáročné použitie. Jedna z cenovo najdostupných jazdeniek.",
-    "img_source": "./pictures/batch_c-zero.webp",
+    "img_source": "./pictures/batch_citroen-c-zero.webp",
     "production": false,
     "ac_charging": {
       "value_min": null,
@@ -577,7 +577,7 @@
     "brand": "Renault",
     "model": "Renault Zoe (II)",
     "description": "Vylepšená generácia ikonického EV od Renaultu. Aj táto generácia dokáže rýchle AC nabíjanie, ktoré nie je štandard ešte ani dnes...",
-    "img_source": "./pictures/batch_r_zoe.webp",
+    "img_source": "./pictures/batch_renault_zoe2.webp",
     "production": true,
     "ac_charging": {
       "value_min": 22,
@@ -754,8 +754,8 @@
     "start": "------------------------------------------------------------------",
     "brand": "Škoda",
     "model": "Škoda Enyaq",
-    "description": "Prémiový elektromobil od tejto automobilky. Bohatá výbava, možnosť ťazného, to všetko z tohoto modelu robí žiadaný elektromobil. Solídny vnútorný priestor a poriadny kufor, ako každý model od Škody.",
-    "img_source": "./pictures/batch_enyaq_s.webp",
+    "description": "Prémiový elektromobil od tejto automobilky. Možnosť ťazného, solídny kufor, dobrý vnútorný priestor, to všetko z tohoto modelu robí žiadaný elektromobil.",
+    "img_source": "./pictures/batch_skoda_enyaq.webp",
     "production": true,
     "ac_charging": {
       "value_min": 11,
