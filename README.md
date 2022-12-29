@@ -15,7 +15,10 @@ Len tak na skúšku vytvorený projekt, na precvičenie si (hlavne) JS.
 - viaceré CSS možnosti (aj keď dizajn je tu na druhej koľaji a isto by potreboval doladiť) - "modal window", "grid", "@keyframes" a "transition"pre animácie, atď... 
 
  <br> 
+
 Na samotnej databázi sa bude pracovať ešte časom, teraz sú tam prevažne testovacie údaje!
+
+ <br>
 
   Vždy aktuálna verzia na okamžité odskúšanie:  
   https://danielgago.sk/ev_databaza/ev_db_index.html
