@@ -1,0 +1,925 @@
+[
+  {
+    "new_item:description": "Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte (prvá musí byť táto, má špeciaĺne prvky v sebe!!!). Oni sa potom aj tak sortujú podľa abecedy... Len nekopírovať túto prvú položku na to, tá je špecifická...",
+    "version_description": "/* iba v prvom objekte je toto info o aktuálnej verzii - poslednej zmene v databázi!!! */",
+    "version": "17.12.2022",
+    "start":"iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie! -------------------------------------------------------------------------",
+    "descripton_popis_štruktúry_databázy": "*/ (len) takto napríklad môžem napísať nápovedu / komentár do json súboru... tu v prvej položke sú občas komentované možné zápisy!! json inak štandardné komentáre nepodporuje... /*",
+    "brand": "VW",
+    "model": "VW e-Up 1. generácia",
+    "description": "Malé mestské vozidlo, ideálne na krátke trasy a nenáročné používanie. Vcelku dobre vybavené. Vyhľadávaná jazdenka.",
+    "image_source_description": "obrázky sú v jednom adresári a sú prekonvertované na webp formát (úspora dát) a veľkostne upravené na šírku 600px, s tým sa ráta. Nie sú dajako extra potrebné aby boli kvalitné, táto databáza nie je obrázková galéria, o to mi nešlo...",
+    "img_source": "./pictures/batch_e-up_1.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": 3.6,
+      "value_max": null,
+      "phases_min": 1,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 37,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 18.7,
+      "nominal_max": null,
+      "useable_min": 16.0,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 180,
+      "WLTP_max": null,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "10.3 - 22.9",
+    "vehicle_seats": 4,
+    "engine_power_min": 62,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 12.4,
+    "akceleration_max": null,
+    "weight": 1229,
+    "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
+    "bat_cooling_active": false,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": true,
+    "towing_device": true,
+    "t_d_restriction_description": "ak je dajaké obmedzenie, tak na začiatku použiť * a text bude oranžový, inak bude text čierny, ako doplňujúce info",
+    "t_d_restriction": "*iba nosič bicyklov!",
+    "plus_info_description": "/* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť / výhoda. Ak nie je žiadny znak, text bude normálne základný */",
+    "plus_info": [
+      "!POZOR - od roku 2017 bol mierny facelift a napríklad na výbave sa to pozná podľa toho či má vozidlo držiak pre Garmin navigáciu, alebo možnosť pripojiť vlastný telefón + tlačidlá na volante a mnoho iných detailov. Technicky zmeny ale neboli výrazné.",
+      "+deliteľné zadné sedadlá",
+      "+vyhrievané čelné sklo",
+      "malá batéria, ale rýchle nabíjanie",
+      "*na prehrievanie batérie v lete (a tým pádom spomalené DC nabíjanie) si treba dávať pozor..."
+    ],
+    "reviews": [
+      {
+        "text": "ev-databáza.de",
+        "link": "https://ev-database.de/pkw/1081/Volkswagen-e-Up"
+      },
+      {
+        "text": "411km výlet na tomto vozidle",
+        "link": "https://danielgago.sk/e-Up_trip.html"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "BMW",
+    "model": "BMW i3",
+    "description": "Dnes už ikonické mestské vozidlo od BMW. Aj napriek tomu že už sa nevyrába, tak ako jazdenka je stále vyhľadávané. V mnohom určilo smer ako budú EV fungovať... Zadný pohon, skvelá zábava.",
+    "img_source": "./pictures/batch_bmw_i3.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 49,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 42.2,
+      "nominal_max": null,
+      "useable_min": 37.9,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 230,
+      "WLTP_max": null,
+      "min": 160,
+      "max": 355
+    },
+    "efficiency": 164,
+    "vehicle_seats": 4,
+    "engine_power_min": 135,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 6.9,
+    "akceleration_max": null,
+    "weight": 1530,
+        "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
+    "bat_cooling_active": true,
+    "heat_pump": "?",
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": "?",
+        "t_d_restriction_description": "ak je dajaké obmedzenie, tak na začiatku použiť * a text bude oranžový, inak bude text čierny, ako doplňujúce info",
+    "t_d_restriction": "",
+    "plus_info_description": "/* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť / výhoda. Ak nie je žiadny znak, text bude normálne základný */",
+    "plus_info": [
+      "+vozidlo počas svojej výroby postupne dostalo 3 rôzne veľkosti batérie (vždy + kapacita) a aj iné detaily. Tieto novšie a výkonnejšie batérie idú použiť aj do starších modelov a tak si majitelia starších kusov občas urobia upgrade...",
+      "na začiatkoch bola aj verzia REX - s pomocným spaľovacím motorom, ktorý ale bol iba generátor elektrickej energie",
+      "*DC nabíjanie je iba 49kW, ale vďaka termomenežmentu batérie je stabilne výkonné",
+      "+karoséria je z uhlíkovývh vlákien a aj v interéri sú použité netradičné materiály a na tú dobu aj riešenia (napr. ovládač smeru jazdy) ktoré sa u EV používajú doteraz",
+      "zadné dvere sa otvárajú proti smeru jazdy"
+    ],
+    "reviews": [
+      {
+        "text": "odkaz na ev-database - posledná verzia so 120Ah batériou",
+        "link": "https://ev-database.org/car/1149/BMW-i3s-120-Ah"
+      }
+    ]
+  },
+  {
+    "start": "--------------------------------------------------------------------",
+    "brand": "Citroen",
+    "model": "Citroen E-Berlingo<br>(verzia M a XL!)",
+    "description": "\"Osobná dodávka\" od automobilky Citroen. Ak potrebujete často odviezť aj dačo iné ako len ľudí. Bezkonkurenčná cena za tento typ el. vozidla.",
+    "img_source": "./pictures/batch_c_berlingo.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 101,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 50,
+      "nominal_max": null,
+      "useable_min": 45,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 258,
+      "WLTP_max": 285,
+      "min": 148,
+      "max": 321
+    },
+    "efficiency": "14.8 - 32.1",
+    "vehicle_seats": 5,
+    "engine_power_min": 100,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 11.7,
+    "akceleration_max": null,
+    "weight": "1739 - 1876",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": "za príplatok",
+    "roof_rack": true,
+    "towing_device": true,
+    "t_d_restriction": "brzdený / nebrzdený príves - max 750kg",
+    "plus_info": [
+      "+bezkoknkurenčný model ktorý v danej cenovej kategórii odvezie aj kopu iného ako len pasažierov",
+      "+existuje aj 7 miestny variant, či už model M alebo XL",
+      "nie je to prémiový osobný automobil čo sa občas prejaví na prvkoch výbavy",
+      "*malá batéria, ktorá v kombinácii s veľkosťou auta robí hlavne na diaľniciach malý dojazd! ",
+      "aktívny termomanažment batérie to do značnej miery zachraňuje, auto nabíja stabilne rýchlo aj v chladnejšom období, či v horku",
+      "+príprava na strešný nosič už v základe!"
+    ],
+    "reviews": [
+      {
+        "text": "SK oficiálna stránka",
+        "link": "https://www.citroen.sk/modely/berlingo-elektricke.html"
+      },
+      {
+        "text": "ev-database - variant M",
+        "link": "https://ev-database.org/car/1546/Citroen-e-Berlingo-M-50-kWh"
+      },
+      {
+        "text":  "ev-database - variant XL",
+        "link": "https://ev-database.org/car/1547/Citroen-e-Berlingo-XL-50-kWh"
+      },
+      {
+        "text": "video recenzia na YT - Elektromobil",
+        "link": "https://www.youtube.com/watch?v=9Qepa7JoJzw&t=1566s&ab_channel=Elektromobil"}
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Opel",
+    "model": "Opel Corsa e",
+    "description": "Patrí k cenovo najdostupnejším plnohodnotným 5 miestnym automobilom. Konzervatívny dizajn Oplu mnohí uprednostňujú pred konkurenciou.",
+    "img_source": "./pictures/batch_opel-corsa-e.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 7.4,
+      "value_max": 11,
+      "phases_min": 1,
+      "phases_max": 3
+    },
+    "dc_charging": {
+      "value_min": 101,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 50,
+      "nominal_max": null,
+      "useable_min": 45,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 275,
+      "WLTP_max": null,
+      "min": 195,
+      "max": 410
+    },
+    "efficiency": 164,
+    "vehicle_seats": 5,
+    "engine_power_min": 100,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 8.1,
+    "akceleration_max": null,
+    "weight": 1530,
+    "bat_cooling_active": true,
+    "heat_pump": "?",
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": "?",
+    "t_d_restriction": "",
+    "plus_info": [
+      "+vďaka mierne menšej batérii ako má konkurencia je tu priaznivejšia cena za automobil tejto veľkosti (aj nižšia hmotnosť)",
+      "vcelku zaujímavá kombinácia menšej batérie a slušného nabíjacieho výkonu, takže s pár nabíjaniami sa dajú prejsť denne už aj zaujímavé kilometre",
+      "vozidlo používa rovnakú EV techniku ako modely od Peugeot a Citroen s rovnakým výkonom motora a kapacitou batérie"
+    ],
+    "reviews": [
+      {
+        "text": "odkaz na ev-database",
+        "link": "https://ev-database.org/car/1192/Opel-Corsa-e"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Dacia",
+    "model": "Dacia Spring",
+    "description": "Jedno z najdostupnejších malých EV aktuálne predávaných na trhu. Daň za to je ale menšia výbava a výkon, v porovnaní s ostatnou konkurenciou.",
+    "img_source": "./pictures/batch_dacia_spring.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 6.6,
+      "value_max": null,
+      "phases_min": 1,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 30,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 27.7,
+      "nominal_max": null,
+      "useable_min": 27.4,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 230,
+      "WLTP_max": null,
+      "min": 120,
+      "max": 305
+    },
+    "efficiency": 12,
+    "vehicle_seats": 4,
+    "engine_power_min": 33,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 19.2,
+    "akceleration_max": null,
+    "weight": 1045,
+    "bat_cooling_active": false,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": false,
+    "towing_device": false,
+    "t_d_restriction": "",
+    "plus_info": [
+      "za málo peňazí, málo muziky, respektíve veľa kompromisov na každom kroku. Ich zoznam by bol na pár bodov...",
+      "*výkon len 33kW je na cestách mimo mesta dosť cítiť",
+      "*DC nabíjanie je možné iba pri vyššej výbave!",
+      "+aj zadné okná sa dajú dobre otvárať (iba mechanicky), to u malého auta poteší",
+      "+vozidlo má dokonca plnohodnotnú rezervu!",
+      "nájsť dobrú recenziu je umenie... Všetky sú skreslené, aby to nevyznelo príliž prísne..."
+    ],
+    "reviews": [
+      {
+        "text": "Oficiálna SK stránka",
+        "link": "https://www.dacia.sk/vozidla/novy-spring.html"
+      },
+      {
+        "text": "TOP videotest od Motoring_TA3",
+        "link": "https://www.youtube.com/watch?v=XxN23K_6rl0&t=849s&ab_channel=MotoringTA3"
+      },
+      {
+        "text":"Test od Techbox.sk",
+        "link": "https://www.techbox.sk/dacia-spring-electric-konecne-elektromobil-dostupny-takmer-pre-kazdeho/"
+      },
+      {
+        "text": "1100km okolo Slovenska",
+        "link": "https://www.mojelektromobil.sk/dacia-spring-electric-1100-kilometrov-okolo-slovenska-blog/"
+      }
+    ]
+  },
+  {
+    "start": "--------------------------------------------------------------------",
+    "brand": "VW",
+    "model": "VW e-Up 2. generácia",
+    "description": "Druhá generácia malého mestského vozidla od VW. Hlavné vylepšenie je batéria s dvojnásobnou kapacitou (viac info je detailoch).",
+    "img_source": "./pictures/batch_VW-e-up-1.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": 7.4,
+      "value_max": null,
+      "phases_min": 2,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 40,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 38.7,
+      "nominal_max": null,
+      "useable_min": 34.0,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 236,
+      "WLTP_max": null,
+      "min": 150,
+      "max": 350
+    },
+    "efficiency": 12.4,
+    "vehicle_seats": 4,
+    "engine_power_min": 62,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 10.2,
+    "akceleration_max": null,
+    "weight": 1160,
+    "bat_cooling_active": false,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": true,
+    "towing_device": true,
+    "t_d_restriction": "*iba nosič bicyklov!",
+    "plus_info": [
+      "+okrem dvojnásobnej batérie dostala táto generácia napríklad aj dvojnásobné AC nabíjanie a online konektivitu",
+      "mierne sa znížila oficiálna rýchlosť DC nabíjania, v praxi ale často aj výrazne, väčšia batéria sa horšie udržiava v tepelnom komforte..."
+    ],
+    "reviews": []
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Fiat",
+    "model": "Fiat 500e 1.generácia",
+    "description": "Malé mestské vozidlo, ideálne na krátke trasy a nenáročné používanie.Táto generácia bola pôvodne určená iba na americký trh!",
+    "img_source": "./pictures/batch_fiat500e_1.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": 6.6,
+      "value_max": null,
+      "phases_min": 1,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": null,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 21.3,
+      "nominal_max": null,
+      "useable_min": 23.8,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 180,
+      "WLTP_max": null,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": 9.1,
+    "vehicle_seats": 4,
+    "engine_power_min": 83,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 10.2,
+    "akceleration_max": null,
+    "weight": 1160,
+    "bat_cooling_active": false,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": false,
+    "towing_device": false,
+    "t_d_restriction": "",
+    "plus_info": [
+      "!iba pomalé AC nabíjanie!"
+    ],
+    "reviews": []
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Škoda",
+    "model": "Škoda CitiGo iV",
+    "description": "Malý model od Škody pre mesto a okolie, v podstate (technicky) zhodný s modelom e-Up (2. generácie) od VW.",
+    "img_source": "./pictures/batch_citigo.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": 7.4,
+      "value_max": null,
+      "phases_min": 2,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 40,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 38.7,
+      "nominal_max": null,
+      "useable_min": 34.0,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 236,
+      "WLTP_max": null,
+      "min": 120,
+      "max": 350
+    },
+    "efficiency": 12.4,
+    "vehicle_seats": 4,
+    "engine_power_min": 62,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 10.2,
+    "akceleration_max": null,
+    "weight": 1160,
+    "bat_cooling_active": false,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": true,
+    "towing_device": true,
+    "t_d_restriction": "*iba nosič bicyklov!",
+    "plus_info": [
+      "rozdiely vo výbave oproti VW e-Up druhej generácie sú minimálne"
+    ],
+    "reviews": []
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Citroen",
+    "model": "Citroen C-Zero<br>(obe generácie)",
+    "description": "Malé mestské vozidlo, ideálne na krátke trasy a nenáročné použitie. Jedna z cenovo najdostupných jazdeniek.",
+    "img_source": "./pictures/batch_c-zero.webp",
+    "production": false,
+    "ac_charging": {
+      "value_min": null,
+      "value_max": null,
+      "phases_min": null,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 40,
+      "value_max": 60
+    },
+    "battery_capacity": {
+      "nominal_min": 18.7,
+      "nominal_max": null,
+      "useable_min": 16.0,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 180,
+      "WLTP_max": null,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": 12.4,
+    "vehicle_seats": 4,
+    "engine_power_min": 62,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 10.2,
+    "akceleration_max": null,
+    "weight": 1160,
+    "bat_cooling_active": true,
+    "heat_pump": false,
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": false,
+    "t_d_restriction": "",
+    "plus_info": ["+ako jazdenka je to relatívne lacné EV",
+  "daňou za celkové rozmery a usporiadanie je menej stabilná jazda, vozidlo je úzke, vysoké a má menšie kolesá"],
+    "reviews": []
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "VW",
+    "model": "VW ID.3",
+    "description": "Aktuálne základný model elektrického vozidla od VW. Prvé čisto elektrické vozidlo od tejto automobilky.",
+    "img_source": "./pictures/batch_vw-id3.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 120,
+      "value_max": 135
+    },
+    "battery_capacity": {
+      "nominal_min": 62,
+      "nominal_max": 82,
+      "useable_min": 58,
+      "useable_max": 77
+    },
+    "range": {
+      "WLTP_min": 429,
+      "WLTP_max": 558,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "13.1 / 15.2",
+    "vehicle_seats": 5,
+    "engine_power_min": 150,
+    "engine_power_max": null,
+    "AWD": true,
+    "akceleration_min": 7.3,
+    "akceleration_max": 7.9,
+    "weight": "?",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": true,
+    "t_d_restriction": "",
+    "plus_info": [
+      "!najvýkonnejšia verzia je iba 4 miestna !!",
+      "dakedy bol v ponuke aj slabší a cenovo dostupnejší variant s ešte menšou batériou aj výkonom motora"
+    ],
+    "reviews": [
+      {
+        "text": "cenníky a katalógy",
+        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+      },
+      {
+        "text": "základné info o vozidle",
+        "link": "https://www.vw.sk/id3"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Renault",
+    "model": "Renault Zoe (II)",
+    "description": "Vylepšená generácia ikonického EV od Renaultu. Aj táto generácia dokáže rýchle AC nabíjanie, ktoré nie je štandard ešte ani dnes...",
+    "img_source": "./pictures/batch_r_zoe.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 22,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 120,
+      "value_max": 135
+    },
+    "battery_capacity": {
+      "nominal_min": 62,
+      "nominal_max": 82,
+      "useable_min": 58,
+      "useable_max": 77
+    },
+    "range": {
+      "WLTP_min": 429,
+      "WLTP_max": 558,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "13.1 / 15.2",
+    "vehicle_seats": 5,
+    "engine_power_min": 150,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 7.3,
+    "akceleration_max": 7.9,
+    "weight": "?",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": true,
+    "t_d_restriction": "",
+    "plus_info": [
+      "+22kW AC nabíjanie je asi TOP benefit",
+      "-------"
+    ],
+    "reviews": [
+      {
+        "text": "----",
+        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+      },
+      {
+        "text": "-----",
+        "link": "https://www.vw.sk/id3"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Citroen",
+    "model": "Citroen e C4",
+    "description": "Moderný mestský štýlový crossover za dostupnejšiu cenu. Hlavne kvôli štandardnej Stellantis technike a (iba) 50kWh batérii. Ale dokáže sa aj slušne rýchlo nabíjať, vďaka aktívnemu termomenežmentu batérie.",
+    "img_source": "./pictures/batch_c-e-c4.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 101,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 50,
+      "nominal_max": null,
+      "useable_min": 45,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 258,
+      "WLTP_max": 285,
+      "min": 148,
+      "max": 321
+    },
+    "efficiency": "14.8 - 32.1",
+    "vehicle_seats": 5,
+    "engine_power_min": 100,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 11.7,
+    "akceleration_max": null,
+    "weight": "1739 - 1876",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": null,
+    "roof_rack": true,
+    "towing_device": true,
+    "t_d_restriction": "brzdený / nebrzdený príves - max 750kg",
+    "plus_info": [
+      "+asi cenovo najdostupnejšie priestorné a moderne štýlové auto do mesta",
+      ""
+    ],
+    "reviews": [
+      {
+        "text": "--------",
+        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+      },
+      {
+        "text": "----------",
+        "link": "https://www.vw.sk/id3"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Honda",
+    "model": "Honda e",
+    "description": "Automobil (do mesta) od Hondy, ktorý vsadil hlavne na imidžový dizajn a zaujímavý techniku (a displaye v interiéry). Ale treba si za to priplatiť...",
+    "img_source": "./pictures/batch_honda_e.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 120,
+      "value_max": 135
+    },
+    "battery_capacity": {
+      "nominal_min": 62,
+      "nominal_max": 82,
+      "useable_min": 58,
+      "useable_max": 77
+    },
+    "range": {
+      "WLTP_min": 429,
+      "WLTP_max": 558,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "13.1 / 15.2",
+    "vehicle_seats": 4,
+    "engine_power_min": 150,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 7.3,
+    "akceleration_max": 7.9,
+    "weight": "?",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": false,
+    "t_d_restriction": "",
+    "plus_info": [
+      "*len trojdverové a 4 miestne vozidlo!",
+      "*kapacita batérie jasne naznačuje že auto je plánované na mestské použitie",
+      "+interiér aký sa bežne nevidí a určite zaujme každého kto si tam sadne",
+      "aj celý vonkajší dozajn zaujme, toto auto na ceste neprehliadnete",
+      "+spätné zrkadlá formou kamery, v štandardnej výbave, tak to sa hneď tak nevidí...",
+      "zaujímavé množstvo displayov vo vnútri vozidla, ani posádka vedľa vodiča sa nebude nudiť..."
+    ],
+    "reviews": [
+      {
+        "text": "--------",
+        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+      },
+      {
+        "text": "---------",
+        "link": "https://www.vw.sk/id3"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Škoda",
+    "model": "Škoda Enyaq",
+    "description": "Prémiový elektromobil od tejto automobilky. Bohatá výbava, možnosť ťazného, to všetko z tohoto modelu robí žiadaný elektromobil. Solídny vnútorný priestor a poriadny kufor, ako každý model od Škody.",
+    "img_source": "./pictures/batch_enyaq_s.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 120,
+      "value_max": 135
+    },
+    "battery_capacity": {
+      "nominal_min": 62,
+      "nominal_max": 82,
+      "useable_min": 58,
+      "useable_max": 77
+    },
+    "range": {
+      "WLTP_min": 429,
+      "WLTP_max": 558,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "13.1 / 15.2",
+    "vehicle_seats": 5,
+    "engine_power_min": 132,
+    "engine_power_max": 150,
+    "AWD": true,
+    "akceleration_min": 9,
+    "akceleration_max": 7.9,
+    "weight": "1998 - 2200",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": "za príplatok",
+    "roof_rack": "?",
+    "towing_device": true,
+    "t_d_restriction": "nebrzdený príves 750kg, brzdený až 1000 - 1200kg.",
+    "plus_info": [
+      "+existuje aj variant COUPE RS! - výkonnejší, prémiovejší, drahší... (jeho parametre tu nie sú zahrnuté!)",
+      "+praktické kombi prevedenie základného modelu",
+      "*najzákladnejśí variant (menšia batéria a menší výkon, ale priaznivejšia cena) automobilka stiahla z ponuky"
+    ],
+    "reviews": [
+      {
+        "text": "Sk stránka modelu",
+        "link": "https://www.skoda-auto.sk/modely/enyaq/enyaq-iv"
+      },
+      {
+        "text": "SK stránka modelu COUPE",
+        "link": "https://www.skoda-auto.sk/modely/enyaq/enyaq-coupe-rs-iv"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "Mazda",
+    "model": "Mazda MX-30",
+    "description": "Štýlový mestský elektromobil s výbornými jazdnými vlastnosťami, ale menšou batériou a malým dojazdom mimo mesta. Ani nabíjanie nie je najrýchlejšie.",
+    "img_source": "./pictures/batch_mazda_mx30.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 7.4,
+      "value_max": 11,
+      "phases_min": 1,
+      "phases_max": 3
+    },
+    "dc_charging": {
+      "value_min": 101,
+      "value_max": null
+    },
+    "battery_capacity": {
+      "nominal_min": 50,
+      "nominal_max": null,
+      "useable_min": 45,
+      "useable_max": null
+    },
+    "range": {
+      "WLTP_min": 275,
+      "WLTP_max": null,
+      "min": 195,
+      "max": 410
+    },
+    "efficiency": 164,
+    "vehicle_seats": 5,
+    "engine_power_min": 100,
+    "engine_power_max": null,
+    "AWD": false,
+    "akceleration_min": 8.1,
+    "akceleration_max": null,
+    "weight": 1530,
+    "bat_cooling_active": true,
+    "heat_pump": "?",
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": "?",
+    "t_d_restriction": "",
+    "plus_info": [
+      "*toto auto dokáže nemilo prekvapiť diaľnčným dojazdom",
+      "+predvádzacie a skladové vozidlá majú občas naozaj zaujímavé ceny",
+      "zadné dvere sa otvárajú proti smeru jazdy, to rozhodne zaujme"
+    ],
+    "reviews": [
+      {
+        "text": "odkaz na ev-database",
+        "link": "https://ev-database.org/car/1192/Opel-Corsa-e"
+      }
+    ]
+  },
+  {
+    "start": "------------------------------------------------------------------",
+    "brand": "VW",
+    "model": "VW ID.4",
+    "description": "Väčší, priestrannejší model elektrického vozidla od VW. Pre tých ktorým ID3 nestačí. Ťažné zariadenie je samozrejmosť.",
+    "img_source": "./pictures/batch_vw-id4.webp",
+    "production": true,
+    "ac_charging": {
+      "value_min": 11,
+      "value_max": null,
+      "phases_min": 3,
+      "phases_max": null
+    },
+    "dc_charging": {
+      "value_min": 120,
+      "value_max": 135
+    },
+    "battery_capacity": {
+      "nominal_min": 62,
+      "nominal_max": 82,
+      "useable_min": 58,
+      "useable_max": 77
+    },
+    "range": {
+      "WLTP_min": 429,
+      "WLTP_max": 558,
+      "min": 70,
+      "max": 155
+    },
+    "efficiency": "13.1 / 15.2",
+    "vehicle_seats": 5,
+    "engine_power_min": 150,
+    "engine_power_max": null,
+    "AWD": true,
+    "akceleration_min": 7.3,
+    "akceleration_max": 7.9,
+    "weight": "?",
+    "bat_cooling_active": true,
+    "heat_pump": true,
+    "h_p_info": null,
+    "roof_rack": "?",
+    "towing_device": true,
+    "t_d_restriction": "",
+    "plus_info": [
+      "!najvýkonnejšia verzia je iba 4 miestna !!",
+      "model má aj športový variant - GTX (4 kolka)"
+    ],
+    "reviews": [
+      {
+        "text": "cenníky a katalógy",
+        "link": "https://www.vw.sk/id4/id4/cenniky-a-katalogy"
+      },
+      {
+        "text": "základné info o vozidle",
+        "link": "https://www.vw.sk/id4"
+      }
+    ]
+  }
+]

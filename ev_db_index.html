@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <link rel="preload" as="image" href="./pictures/ev.png">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mini databáza EV vozidiel dostupných na SK trhu so základným prehľadom ich (hlavne elektrických) vlastností.">
+    <title>Mini databáza EV</title>
+
+    <!-- ikony -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="./icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+    <link rel="manifest" href="./icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="ev_db_style.css">
+    <script src="ev_db_script.js" defer></script>
+
+</head>
+
+<body>
+
+
+    <div class="width">
+        <header>
+            <img style="display: none;" src="./pictures/ev.png" alt="EV logo">
+            <h1 id="h1_txt">Mini databáza<br>elektrických vozidiel</h1>
+        </header>
+        <div class="test">
+            <p>Stránka je v skúšobnej prevádzke!!!</p>
+        </div>
+        <section class="overview">
+            <div class="ov_1">
+                <p>
+                <div class="svg_i"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="10px" y="10px" viewBox="0 0 32 32"
+                        style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <g>
+                                    <path style="fill:var(--color_primary);" d="M10,16c1.105,0,2,0.895,2,2v8c0,1.105-0.895,2-2,2H8v4h16v-4h-1.992c-1.102,0-2-0.895-2-2L20,12H8
+            				v4H10z" />
+                                    <circle style="fill:var(--color_primary);" cx="16" cy="4" r="4" />
+                                </g>
+                            </g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                    </svg>
+                </div>
+                <p>Malý prehľad (aktuálne) dostupných elektrických vozidiel. Sú tu iba modely ktoré "reálne dávajú
+                    zmysel".
+                    Od jednoduchých malých EV do mesta (kde tá elektromobilita funguje asi najlepšie), po modely ktoré
+                    cenovo nie sú už totálne za hranicou dostupnosti.</p>
+                <h3 style="clear:both;">Hlavné benefity tejto mini databázy sú:</h3>
+                <ul>
+                    <li> všeobecné informácie (na jednom mieste) o (aktuálne) dostupných modeloch a hlavne ich
+                        základných
+                        elektrických parametroch
+                    </li>
+                    <li> možnosť filtrovania áut podľa konkrétných požiadaviek na dajakú vlastnosť, výbavu (napríklad
+                        možnosť nosičov, ťažného, počet miest), ale aj podľa výrobcu. Filtre fungujú súčasne a zobrazuje
+                        iba vozidlá ktoré spĺňajú všetky požadované parametre!</li>
+                    <li> databáza obsahuje aj odkazy na rôzne zaujímavé SK/CZ recenzie daného modelu</li>
+                    <li> a sú tu doplnené / vypichnuté aj zaujímavé konkrétne vlastnosti daného modelu, ktoré sa oplatí
+                        poznať ak dakto uvažuje o jeho kúpe</li>
+                </ul>
+                <p>Väčšinu údajov o vozidlách som čerpal zo stránky: <a href="https://ev-database.org" target="_blank"
+                        rel="noopener noreferrer">ev-database.org</a>, alebo priamo z podkladov výrobcov.<br>
+                    <b>Databáza aktuálne obsahuje <span id="vehicle_count">?</span> modelov.</b><br>
+                    (Dátum poslednej aktualizácie: <span id="last_update">--.--.--</span>.)<br>
+                <p style="color:red;">POZOR - databáza nie je ešte dokončená!!</p>
+                <p>Pre lepší komfort prezerania je tu možné nastaviť maximálny počet modelov na stránku:</p>
+                <p class="pgn"><span data-pgn="3">3</span><span data-pgn="4">4</span><span data-pgn="6">6</span><span
+                        data-pgn="8">8</span><span data-pgn="9">9</span><span data-pgn="12">12</span></p>
+            </div>
+            <div class="ov_2"><img src="./pictures/ev.png" alt="EV logo"></div>
+        </section>
+
+        <div class="line"></div>
+        <aside class="filtering">
+            <h3>Hľadáš dačo konkrétne?</h3>
+
+            <svg class="svg_car" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="447.645px" height="447.645px"
+                viewBox="0 0 447.645 447.645"
+                style="fill:var(--color_primary); enable-background:new 0 0 447.645 447.645;" xml:space="preserve">
+                <g>
+                    <path d="M447.639,244.402c0-8.805-1.988-17.215-5.578-24.909c-0.37-1.956-0.793-3.909-1.322-5.89l-38.884-96.365l-0.263-0.867
+        		c-13.605-40.509-32.963-78.001-82.049-78.001H131.868c-50.296,0-68.069,38.421-81.972,77.776l-40.673,96.6
+        		C3.343,222.167,0,232.944,0,244.402v29.986c0,4.636,0.548,9.171,1.59,13.539C0.577,290.566,0,293.41,0,296.408v89.185
+        		c0,13.078,10.602,23.682,23.68,23.682h49.14c13.071,0,23.673-10.604,23.673-23.682v-44.599h257.46v44.599
+        		c0,13.078,10.604,23.682,23.683,23.682h46.326c13.083,0,23.683-10.604,23.683-23.682v-89.195c0-2.987-0.583-5.844-1.588-8.474
+        		c1.038-4.375,1.588-8.905,1.588-13.54v-29.981H447.639z M78.754,125.821c15.483-43.683,27.934-57.018,53.114-57.018h187.664
+        		c24.995,0,38.913,14.873,53.056,56.83l28.375,57.502c-9.265-3.431-19.461-5.335-30.173-5.335H76.849
+        		c-9.645,0-18.862,1.551-27.366,4.358L78.754,125.821z M103.129,285.776H51.281c-9.335,0-16.906-7.578-16.906-16.912
+        		c0-9.337,7.571-16.91,16.906-16.91h51.848c9.339,0,16.91,7.573,16.91,16.91C120.039,278.198,112.463,285.776,103.129,285.776z
+        		 M286.284,282.389h-120.6c-5.913,0-10.704-4.794-10.704-10.704c0-5.921,4.791-10.713,10.704-10.713h120.6
+        		c5.92,0,10.71,4.792,10.71,10.713C296.994,277.595,292.204,282.389,286.284,282.389z M395.051,285.776h-51.846
+        		c-9.343,0-16.91-7.578-16.91-16.912c0-9.337,7.573-16.91,16.91-16.91h51.846c9.343,0,16.916,7.573,16.916,16.91
+        		C411.967,278.198,404.394,285.776,395.051,285.776z" />
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+            </svg>
+            <div class="brand_select">
+                <p>Ktorú značku preferuješ?</p>
+                <div id="brand_select"></div>
+            </div>
+
+            <svg class="svg_filter" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                    <g>
+                        <path style="fill:var(--color_primary);"
+                            d="M8.959,0v81.89l201.666,201.666V512l90.75-60.5V283.556L503.041,81.89V0H8.959z M271.125,435.31l-30.25,20.167V292.416
+        			h30.25V435.31z M279.985,262.166h-47.969L60.6,90.75h390.802L279.985,262.166z M472.791,60.5H39.209V30.25h433.582V60.5z" />
+                    </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+            </svg>
+            <section class="filters">
+                <p>Vyber filtre pre vlastnosti (aj kombinácie sú možné):</p>
+                <label class="check_box">žiadny filter, zobrazujem všetko<input type="checkbox" id="filter_off" checked>
+                    <span class="checkmark"></span></label>
+                <br>
+
+                <label class="check_box">AC nabíjanie 11 a viac kW<input type="checkbox" id="ac_charging">
+                    <span class="checkmark"></span>
+                </label>
+                <br>
+
+
+                <label class="check_box">vozidlo môže mať ťažné zariadenie<input type="checkbox"
+                        id="towing_device"><span class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">vozidlo umožňuje použiť strešný nosič<input type="checkbox"
+                        id="roof_rack"><span class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">5 a viac miestne vozidlá<input type="checkbox" id="5S_vehicle"><span
+                        class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">možnosť pohonu všetkých kolies<input type="checkbox" id="AWD"><span
+                        class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">aktívne chladenie batérií<input type="checkbox" id="active_cooling"><span
+                        class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">iba aktuálne vyrábané modely<input type="checkbox" id="production_true"><span
+                        class="checkmark"></span>
+                </label>
+                <br>
+
+                <label class="check_box">iba už nevyrábané modely<input type="checkbox" id="production_false"><span
+                        class="checkmark"></span>
+                </label>
+                <p class="filtering_info">(Filter zobrazí aj vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
+                    napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda možná,
+                    ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť presnejšie
+                    ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely, kde je
+                    istota že daná vlastnosť naozaj nie je. <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
+                        nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky!</b>)</p>
+            </section>
+
+            <!-- mám aj svg element pre sortovanie, ale nateraz nepoužité... -->
+            <!--<svg class = "svg_search" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
+                <g>
+                    <polygon style="fill:var(--color_primary);" points="85.877,154.014 85.877,428.309 131.706,428.309 131.706,154.014 180.497,221.213 217.584,194.27 108.792,44.46 
+            		0,194.27 37.087,221.213 	" />
+                    <polygon style="fill:var(--color_primary);" points="404.13,335.988 404.13,61.691 358.301,61.691 358.301,335.99 309.503,268.787 272.416,295.73 381.216,445.54 
+            		490,295.715 452.913,268.802 	" />
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+            </svg>-->
+
+        </aside>
+        <div class="line"></div>
+        <section class="filter_info" id="filter_info">
+            <h3>Zobrazené vozidlá z katalógu:</h3>
+            <!-- <p class="more_info">(pre viac informácií klini: <span>(i)</span>)</p> -->
+            <p class="filtering_info">(Číslo pri značke označuje celkový počet vozidiel danej značky v databázy, ale ak to filter nedovolí, tak nemusia tu byť všetky zobrazené!)</p>
+            <p>Značky: <span id="filtered_brand">zobrazujem všetky značky</span></p>
+            <p>Aktívne filtre: <span id="filters">žiadny filter, zobrazujem všetko</span></p>
+        </section>
+
+
+        <section class="result">
+            <div id="loading_spinner_block">
+                <div class="loading_spinner"></div>
+                <p>načítavam databázu...</p>
+            </div>
+        </section>
+
+        <div id="pagination">
+            <ul>
+                <!-- obsah zabezpečuje JS! -->
+            </ul>
+        </div>
+
+        <footer>&copy; 2022 Daniel Gago</footer>
+    </div>
+
+    <section id="modal" data-button="x">
+        <!-- data-button="x" - všetky tieto elementy dokážu zatvoriť modal okno! -->
+        <div id="modal_content">
+        </div>
+        <button id="modal_x" data-button="x"></button>
+    </section>
+
+</body>
+
+</html>

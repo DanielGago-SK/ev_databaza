@@ -1,0 +1,920 @@
+@charset "utf-8";
+
+/*** dajaké globálne / systémové nastavenia na úvod */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  letter-spacing: 0.7px;
+  font-family: Helvetica, sans-serif;
+  /*font-size: 16px;*/
+  line-height: 1.75rem;
+  color: var(--color_txt);
+}
+
+:root {
+  /* použité farby */
+  --color_txt: rgb(34, 34, 34);
+  --color_primary: rgb(0, 140, 255);
+  --color_hell: rgb(118, 193, 255);
+}
+
+/* ! toto musí byť, aby mi pri zastavení skrolovania počas modal okna neposúvalo obsah na kraj do strany... rušil sa vtedy margin auto pre šírku stránky...*/
+body {
+  left: 0;
+  right: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/*** toto platí generálne pre celú stránku */
+a:link,
+a:active,
+a:visited {
+  color: var(--color_primary);
+}
+
+h1,
+h2,
+h3 {
+  /* farby a fonty nadpisov */
+  color: black;
+}
+
+h3 {
+  font-size: 130%;
+}
+
+/*** globálna šírka stránky */
+.width {
+  position: relative;
+  max-width: 1366px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  -webkit-transition: opacity 0.75s;
+  -o-transition: opacity 0.75s;
+  transition: opacity 0.75s;
+  overflow: hidden;
+}
+
+/***  Hlavička */
+header {
+  padding: 5%;
+}
+
+@media only screen and (max-width: 480px) {
+  header img {
+    width: 80%;
+    max-width: 210px;
+    display: block !important;
+    margin-inline: auto;
+  }
+}
+
+header h1 {
+  color: white;
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  text-align: center;
+  font-family: Times, serif;
+  line-height: clamp(3rem, 7vw, 4.5rem);
+}
+
+h1 span {
+  color: white;
+}
+
+/*** deliaca "linajka" medzi blokmi a v modal okne */
+.line {
+  display: block;
+  width: calc(100% + 2rem);
+  position: relative;
+  left: -1rem;
+  height: 1px;
+  border-top: 1px solid var(--color_primary);
+  margin: 0.5rem auto;
+}
+
+/*
+todo len dočasne - info že stránka je vo výstavbe */
+.test {
+  position: relative;
+  top: -2rem;
+  max-width: 40ch;
+  margin: 1rem auto 0 auto;
+  color: black;
+  background-color: #ff881d;
+  text-align: center;
+  font-size: 1.5rem;
+  overflow-x: hidden;
+}
+.test p {
+  position: relative;
+  padding: 0.1rem 0 0.25rem 0;
+  -webkit-animation: move_inline 12s infinite linear;
+  animation: move_inline 12s infinite linear;
+}
+
+@-webkit-keyframes move_inline {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes move_inline {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/*** sekcia - prehľad - o čom stránka je */
+.overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.svg_i {
+  /* dizajnové "i" v info bloku */
+  width: clamp(3rem, 10vw, 6rem);
+  display: inline;
+  float: left;
+  border: 3px solid var(--color_primary);
+  padding: 2% 0 0 1%;
+  border-radius: clamp(5px, 2vw, 20px);
+  margin: 0 2vw 1vw 0;
+  margin-right: clamp(1.25rem, 2.5vw, 2.5rem);
+  position: relative;
+  top: 6px;
+}
+
+/* prvý blok prehľadu - text vľavo */
+.ov_1 {
+  max-width: 70ch;
+}
+
+.ov_1 h3 {
+  padding-top: 1rem;
+}
+
+.ov_1 p:last-of-type {
+  padding-top: 0.75rem;
+}
+
+.overview ul {
+  padding-bottom: 1rem;
+}
+
+.overview li {
+  list-style: none;
+  margin-left: 0.5em;
+  padding-top: 0.5rem;
+}
+
+.overview li::before {
+  /* redizajn li elementov - šípky */
+  position: relative;
+  top: 4px;
+  left: -0.25em;
+  content: "";
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  background-size: 0.8em 0.8em;
+  background-image: url(./pictures/arrow-right.svg);
+  background-repeat: no-repeat;
+}
+
+/* druhý blok prehľadu - čisto iba logo */
+.ov_2 {
+  margin-left: 2rem;
+  width: 450px;
+}
+
+.ov_2 img {
+  max-width: 400px;
+}
+
+@media only screen and (max-width: 1000px) {
+  /* pod toto rozlíšenie to veľké logo netreba, len tam vypĺňalo miesto pre veľké rozlíšenia */
+  .ov_2 {
+    display: none;
+  }
+}
+
+/* dizajn pre nastavenie počtu elementov na stránku -pagination- */
+.pgn span {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1.2;
+  padding: 0 0.4rem;
+  margin-inline: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid transparent;
+}
+
+.pgn span:hover {
+  background-color: var(--color_primary);
+  color: white;
+}
+
+.sel {
+  border: 2px solid var(--color_primary) !important;
+}
+
+/*** aside - filtering */
+.svg_car,
+.svg_filter,
+.svg_search {
+  width: clamp(1.5rem, 4vw, 2.5rem);
+  height: clamp(1.5rem, 4vw, 2.5rem);
+  margin: 0.75rem 0 0.5rem 0;
+}
+
+select {
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid var(--color_primary);
+  border-radius: 5px;
+  margin: 0.5rem 0;
+  background-color: white;
+}
+
+/*** filter pre vlastnosti */
+/* toto je jedno z mála použitých hotových riešení */
+/* samozrejme viem ako tam čo funguje a mám to doladené pre svoje potreby... */
+.check_box,
+.check_box_mark {
+  display: inline-block;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* toto je jemne iné doladenie pre výber značky */
+.check_box_mark {
+  padding-left: 1.75rem;
+  padding-right: 1.5rem;
+}
+
+.check_box:first-of-type,
+.check_box_mark:first-of-type {
+  margin-top: 0.7em;
+}
+
+/* Hide the browser's default checkbox */
+.check_box input,
+.check_box_mark input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #fff;
+  border: 2px solid var(--color_primary);
+  border-radius: 4px;
+}
+
+/* On mouse-over, add background color */
+.check_box:hover input ~ .checkmark,
+.check_box_mark:hover input ~ .checkmark {
+  background-color: var(--color_primary);
+}
+
+/* When the checkbox is checked, add a blue background */
+.check_box input:checked ~ .checkmark,
+.check_box_mark input:checked ~ .checkmark {
+  background-color: var(--color_primary);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check_box input:checked ~ .checkmark:after,
+.check_box_mark input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check_box .checkmark:after,
+.check_box_mark .checkmark:after {
+  left: 0.3em;
+  top: 0em;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.filtering_info {
+  /* popis ako fungujú filtre */
+  font-size: 14px;
+  font-style: italic;
+  max-width: 80ch;
+}
+
+/*** sekcia - filter info */
+.filter_info h3 {
+  padding: 0.2rem 0 0.4rem 0;
+}
+
+.filter_info p {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.filter_info span {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.filter_info .filtering_info {
+  /* popis ako fungujú filtre */
+  font-weight: 300;
+  font-size: 14px;
+  font-style: italic;
+  max-width: 80ch;
+}
+
+.brand_select {
+  max-width: 80ch;
+}
+
+/*** sekcia s výsledkami - vozidlami */
+.result {
+  position: relative;
+  padding: 1rem 0;
+  /* použijem grid, ale aj flex by mohol byť, ba dokonca by umožnil ľahko dať obsah posledného a / alebo nie komplet plného riadku na stred... */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  -webkit-column-gap: 1rem;
+  -moz-column-gap: 1rem;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
+/* responzivita pre grid */
+@media only screen and (max-width: 1199px) {
+  .result {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .result {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .result {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* class pe prázdny zoznam v sekcii .result - zruším tým grid, aby bol text oznamu pekne na strede... */
+/* ! toto musí byť za @media, inak mi to rušilo... */
+.grid_off {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+/*** spinner pri štarte načítavania databázy  */
+#loading_spinner_block {
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 2000;
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 120%;
+}
+.loading_spinner {
+  width: 30vh;
+  height: 30vh;
+  border-top: 2vh solid var(--color_primary);
+  border-right: 2vh solid rgb(230, 230, 230);
+  border-bottom: 2vh solid rgb(230, 230, 230);
+  border-left: 2vh solid rgb(230, 230, 230);
+  border-radius: 50%;
+  -webkit-animation: loading 1s infinite linear;
+  animation: loading 1s infinite linear;
+}
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/** jednotlivé položky v sekcii výsledkov (result) - generuje ich až JS */
+.item {
+  border: 2px solid var(--color_primary);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  /* použijem flex, stačí keď je obsah naladený vo vedľajších blokoch vedľa seba... */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* nadpis s obrázkom sú v jednom bloku, popisný text je samostatne a info o výrobe  + tlačidlo pre viac informácií sú tiež v jednom bloku! kvôli celkovému dizajnu
+ale to všetko sa tak generuje až v JS ku... */
+
+.item img {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 0.35rem;
+  -webkit-transition: scale 0.25s ease-in-out;
+  -o-transition: scale 0.25s ease-in-out;
+  transition: scale 0.25s ease-in-out;
+}
+
+.item img:hover {
+  scale: calc(1.055);
+}
+
+.item img:hover {
+  cursor: pointer;
+}
+
+.item h3 {
+  padding-bottom: 0.5rem;
+}
+
+.item b {
+  font-weight: 550;
+}
+
+.production_info {
+  padding-block: 0.5rem;
+}
+
+/* tlačidlo "viac informácií" */
+.details_button {
+  position: relative;
+  -webkit-transition: color 0.1s;
+  -o-transition: color 0.1s;
+  transition: color 0.1s;
+  -webkit-transition: background-color 0.1s;
+  -o-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+  font-weight: 600;
+  text-align: center;
+  /*background-color: white;
+  background-color: var(--color_hell);*/
+  background-color: rgb(215, 237, 255);
+  border: 2px solid var(--color_primary);
+  padding: 3px;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  color: black;
+}
+
+.details_button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: var(--color_primary);
+}
+
+/*** sekcia s pagináciou zoznamu áut */
+#pagination {
+  /* zobrazím ju až keď bude treba */
+  display: none;
+  /*margin-inline: auto; - tento kód nahradil flex*/
+  text-align: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+#pagination li {
+  display: inline;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 0.15rem;
+  border: 2px solid transparent;
+}
+
+@media only screen and (max-width: 400px) {
+  #pagination li {
+    padding: 0.1rem 0.5rem;
+    margin: 2px;
+  }
+}
+
+#pagination .selected {
+  border: 2px solid var(--color_primary);
+}
+#pagination .number:hover {
+  color: white;
+  background-color: var(--color_primary);
+  cursor: pointer;
+}
+
+/*** modal okno s konkrétnou položkou */
+#modal {
+  /* zobrazí sa podľa potreby */
+  display: none;
+  -webkit-transition: background-color 400ms linear;
+  -o-transition: background-color 400ms linear;
+  transition: background-color 400ms linear;
+  background-color: transparent;
+  /* je to hlavný blok modal okna - a teda na celú obrazovku */
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 1vh;
+}
+
+#modal_content {
+  /* samotný obsah modal eleentu - zobrazený artikel */
+  z-index: 1000;
+  position: relative;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.75s;
+  -o-transition: all 0.75s;
+  transition: all 0.75s;
+  /*border: 1px solid var(--color_primary);*/
+  border-radius: 14px;
+  margin: 8vh auto;
+  max-width: calc(600px + 2rem); /* obrázky sú presne 600px */
+  padding: 0 1rem;
+  height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  overflow-x: hidden;
+  background-color: white;
+  /* použil som box-schadow ako má aj Alza... vyzerá to fajn*/
+  /*-webkit-box-shadow: 0 0 10px 1px var(--color_hell);
+  box-shadow: 0 0 10px 1px #404142;*/
+  -webkit-box-shadow: 0 0 5px 0px var(--color_hell);
+  box-shadow: 0 0 5px 0px var(--color_hell);
+}
+
+@media only screen and (max-width: calc(600px + 4rem)) {
+  #modal_content {
+    /* na veľkých monitoroch je to na stred, na malej obrazovke ale treba doladiť krajný margin, inak sa mi to opre o kraj... */
+    margin-inline: 0.75rem;
+  }
+}
+
+#modal_content h3 {
+  text-align: center;
+  padding: 1rem 0 2rem 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1rem;
+  background-color: white;
+  z-index: 5;
+}
+
+#modal_content h3:before {
+  content: "";
+  width: calc(100% + 2rem + 1px);
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  z-index: -1;
+}
+
+/* 
+todo len dočasne, vymaž potom */
+.test_db_info {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2rem;
+  text-align: center;
+  color: black;
+  background-color: #ff881d;
+  margin-top: -1.35rem;
+  margin-bottom: 0.5rem;
+  z-index: 10;
+}
+.test_db_info::before {
+  content: "";
+  width: calc(100% + 2rem + 1px);
+  height: 100%;
+  background-color: #ff881d;
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  z-index: -1;
+}
+
+#modal_content img {
+  opacity: 0;
+  max-width: 100%;
+  -webkit-animation: modal_img_opacity 1s ease-out forwards;
+  animation: modal_img_opacity 1s ease-out forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+/* obrázok nabieha pomaly a až po tom čo prebehne scaling modal obsahu... na niektorých prehliadačoch to obrázok neškáluje plynulo spolu s textovým obsahom, ale seká to s ním... */
+@-webkit-keyframes modal_img_opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal_img_opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#modal .arrows {
+  display: inline;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 2rem;
+  left: calc(100% - 3rem);
+  color: var(--color_primary);
+  font-size: 130%;
+  font-weight: 900;
+  -webkit-animation: arrows_move 2.5s linear 2;
+  animation: arrows_move 2.5s linear 2;
+}
+
+@-webkit-keyframes arrows_move {
+  0% {
+    bottom: 2rem;
+  }
+  70% {
+    bottom: 2rem;
+  }
+  75% {
+    bottom: 3rem;
+  }
+  85% {
+    bottom: 1rem;
+  }
+  95% {
+    bottom: 3rem;
+  }
+  100% {
+    bottom: 2rem;
+  }
+}
+
+@keyframes arrows_move {
+  0% {
+    bottom: 2rem;
+  }
+  70% {
+    bottom: 2rem;
+  }
+  75% {
+    bottom: 3rem;
+  }
+  85% {
+    bottom: 1rem;
+  }
+  95% {
+    bottom: 3rem;
+  }
+  100% {
+    bottom: 2rem;
+  }
+}
+
+#modal_x {
+  /* "x" button pre modal blok*/
+  position: absolute;
+  top: 5px;
+  right: 1rem;
+  margin-top: 1.2vh;
+  height: 24px;
+  width: 24px;
+  border: 1px solid var(--color_primary);
+  border-radius: 6px;
+  background-color: rgb(240, 240, 240);
+  z-index: 1000;
+}
+
+#modal_x::before,
+#modal_x::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 43%;
+  height: 70%;
+  width: 14%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: red;
+}
+
+#modal_x::before {
+  /*transform: rotate(45deg);*/
+  top: 71%;
+  left: 43%;
+  height: 14%;
+  width: 14%;
+  -webkit-animation: modal_animation_b 0.35s linear forwards;
+  animation: modal_animation_b 0.35s linear forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+#modal_x::after {
+  /*transform: rotate(-45deg);*/
+  top: 15%;
+  left: 43%;
+  height: 48%;
+  width: 14%;
+  -webkit-animation: modal_animation_a 0.35s linear forwards;
+  animation: modal_animation_a 0.35s linear forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+/* rotačný efekt, aby užívateľa tlačidlo zaujalo a videl kam kliknúť ak chce okno zatvoriť */
+@-webkit-keyframes modal_animation_b {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background-color: red;
+  }
+  99% {
+    background-color: red;
+  }
+  100% {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    background-color: black;
+    top: 15%;
+    height: 70%;
+  }
+}
+@keyframes modal_animation_b {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background-color: red;
+  }
+  99% {
+    background-color: red;
+  }
+  100% {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    background-color: black;
+    top: 15%;
+    height: 70%;
+  }
+}
+
+@-webkit-keyframes modal_animation_a {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  99% {
+    background-color: red;
+  }
+  100% {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    background-color: black;
+    top: 15%;
+    height: 70%;
+  }
+}
+
+@keyframes modal_animation_a {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  99% {
+    background-color: red;
+  }
+  100% {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    background-color: black;
+    top: 15%;
+    height: 70%;
+  }
+}
+
+#modal_x:hover {
+  outline: 1px solid var(--color_primary);
+  cursor: pointer;
+}
+
+#modal_x:hover:after,
+#modal_x:hover:before {
+  background-color: red !important;
+}
+
+/* responzivita pre X ko, na úzkých obrazovkách je nad modal obsahom a má tam menej miesta, na veľkých obrazovkách zasa nechcem aby odišla zbytočne na kraj, ale ani aby zostávala nad oknom s obsahom */
+@media only screen and (min-width: 800px) {
+  #modal_x {
+    right: calc((100vw - 750px) / 3);
+  }
+}
+@media only screen and (min-width: 735px) {
+  #modal_x {
+    height: 34px;
+    width: 34px;
+    border-radius: 10px;
+  }
+}
+
+@media only screen and (max-height: 450px) {
+  /* mobil na ležato... */
+  #modal_x {
+    height: 20px;
+    width: 20px;
+    margin-top: 0;
+  }
+}
