@@ -691,7 +691,7 @@ function displayBrandStatus() {
             vehicles++;
           }
         }
-        brand += element.id + " (" + vehicles + "); ";
+        brand += element.id + "&nbsp;(" + vehicles + "); ";
       }
     });
   }
