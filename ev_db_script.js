@@ -87,7 +87,8 @@ async function getData(file) {
   createVehiclesBrandSelect();
   // aktivuje funkciu na výber značky
   selectBrand();
-  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie
+  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich načítam... 
+  input_filter = document.querySelectorAll(`.check_box input[type="checkbox"]`);
   controlFilterCheckbox();
   // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel v databázy
   // neskôr budem pracovať s inými - filtrovanými poliami
@@ -141,15 +142,16 @@ function createVehiclesBrandSelect() {
   v_brand_unique = [...new Set(v_brand)];
   /* a uprac ich podľa abecedy... */
   v_brand_unique.sort();
+  // najskôr vytvoríme prvý výber - vypnutie filtra značiek...
   brand_select.innerHTML += `<label class="check_box_mark">Vypnutý filter značiek<input type="checkbox" id="no_mark" checked><span class="checkmark"></span></label><br>`;
   /* a filtrovaný zoznam potom prihoď do základu selektora... */
   v_brand_unique.forEach((brand) => {
-    /*opt = document.createElement("option");
-    opt.value = brand;
-    opt.innerText = brand;
-    v_selector.appendChild(opt);*/
     brand_select.innerHTML += `<label class="check_box_mark">${brand}<input type="checkbox" id="${brand}"><span class="checkmark"></span></label>`;
   });
+  // a hneď to načítaj, neskôr s nimi pracujem...
+  input_brand = document.querySelectorAll(
+    `.check_box_mark input[type="checkbox"]`
+  );
 }
 
 // zobraz všetky, alebo vybrané autá z katalógu
@@ -631,9 +633,7 @@ window.onclick = function (e) {
 
 /*** načítaj a spracuj selector značiek ***/
 function selectBrand() {
-  input_brand = document.querySelectorAll(
-    `.check_box_mark input[type="checkbox"]`
-  );
+  // pracujem tu s "input_brand" - tu sa načítali všetky inputy pre značky, pri ich spracovaní z databázy
 
   for (let b of input_brand) {
     b.addEventListener("click", function () {
@@ -695,7 +695,6 @@ function displayBrandStatus() {
       }
     });
   }
-
   filtered_brand.innerHTML = brand.slice(0, -2);
   /* a zavolaj funkciu na prekreslenie zoznamu áut na stránke */
   createVehicleArticles();
@@ -703,7 +702,7 @@ function displayBrandStatus() {
 
 /*** načítaj a spracuj checkbox filtrovania */
 function controlFilterCheckbox() {
-  input_filter = document.querySelectorAll(`.check_box input[type="checkbox"]`);
+  // pracujem tu s "input_filter" - v ňom sú načítané všetky výbery pre filtre  
 
   for (let i of input_filter) {
     i.addEventListener("click", function () {
@@ -824,7 +823,7 @@ function displayFilterStatus() {
       if (selected_filter.length == 0) {
         selected_filter = s_f_input;
       } else {
-        // ale ak prázdny nebol, tak tam pridaj poloŹky, ale iba "prienik"...
+        // ale ak prázdny nebol, tak tam pridaj položky, ale iba "prienik"...
         selected_filter = s_f_input.filter((element) =>
           selected_filter.includes(element)
         );
