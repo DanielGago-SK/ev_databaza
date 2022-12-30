@@ -44,6 +44,7 @@
     "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
     "bat_cooling_active": false,
     "heat_pump": false,
+    "h_p_info_info":"/*informácia k tepelnému čerpadlu - bude v zátvorke... Napríklad že je iba za príplatok a tak...*/",
     "h_p_info": null,
     "roof_rack": true,
     "towing_device": true,
@@ -518,7 +519,7 @@
     "start": "------------------------------------------------------------------",
     "brand": "VW",
     "model": "VW ID.3",
-    "description": "Aktuálne základný model elektrického vozidla od VW. Prvé čisto elektrické vozidlo od tejto automobilky.",
+    "description": "Aktuálne základný model elektrického vozidla od VW. Prvé čisto elektrické vozidlo od tejto automobilky na modernej platforme.",
     "img_source": "./pictures/batch_vw-id3.webp",
     "production": true,
     "ac_charging": {
@@ -559,7 +560,7 @@
     "t_d_restriction": "",
     "plus_info": [
       "!najvýkonnejšia verzia je iba 4 miestna !!",
-      "dakedy bol v ponuke aj slabší a cenovo dostupnejší variant s ešte menšou batériou aj výkonom motora"
+      "dakedy bol v ponuke aj slabší a cenovo dostupnejší variant, s ešte menšou batériou aj výkonom motora"
     ],
     "reviews": [
       {
@@ -616,17 +617,17 @@
     "towing_device": true,
     "t_d_restriction": "",
     "plus_info": [
-      "+22kW AC nabíjanie je asi TOP benefit",
+      "+22kW AC nabíjanie je asi TOP benefit, AC nabíjanie je vždy lacnejšie a s týmto autom sa dá použiť bežne aj na verejnej nabíjačke, ak je trocha času...",
       "-------"
     ],
     "reviews": [
       {
-        "text": "----",
-        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+        "text": "",
+        "link": ""
       },
       {
-        "text": "-----",
-        "link": "https://www.vw.sk/id3"
+        "text": "",
+        "link": ""
       }
     ]
   },
@@ -675,16 +676,16 @@
     "t_d_restriction": "brzdený / nebrzdený príves - max 750kg",
     "plus_info": [
       "+asi cenovo najdostupnejšie priestorné a moderne štýlové auto do mesta",
-      ""
+      "-na diaľkových cestách budete obmedzený dojazdm na diaľniciach... Takže častejšie nabíjanie treba plánovať."
     ],
     "reviews": [
       {
-        "text": "--------",
-        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+        "text": "",
+        "link": ""
       },
       {
-        "text": "----------",
-        "link": "https://www.vw.sk/id3"
+        "text": "",
+        "link": ""
       }
     ]
   },
@@ -692,7 +693,7 @@
     "start": "------------------------------------------------------------------",
     "brand": "Honda",
     "model": "Honda e",
-    "description": "Automobil (do mesta) od Hondy, ktorý vsadil hlavne na imidžový dizajn a zaujímavý techniku (a displaye v interiéry). Ale treba si za to priplatiť...",
+    "description": "Automobil (do mesta), ktorý vsadil hlavne na imidžový dizajn a zaujímavú techniku (a displaye v interiéry). Ale treba si za to priplatiť...",
     "img_source": "./pictures/batch_honda_e.webp",
     "production": true,
     "ac_charging": {
@@ -853,9 +854,10 @@
     "towing_device": "?",
     "t_d_restriction": "",
     "plus_info": [
-      "*toto auto dokáže nemilo prekvapiť diaľnčným dojazdom",
+      "*toto auto dokáže nemilo prekvapiť diaľnčným dojazdom a nepodrží ho v tom ani rýchlosť nabíjania",
       "+predvádzacie a skladové vozidlá majú občas naozaj zaujímavé ceny",
-      "zadné dvere sa otvárajú proti smeru jazdy, to rozhodne zaujme"
+      "zadné dvere sa otvárajú proti smeru jazdy, to rozhodne zaujme",
+      "+toto auto má naozaj výborné jazdné vlastnosti a kopu dobrej výbavy"
     ],
     "reviews": [
       {
@@ -868,7 +870,7 @@
     "start": "------------------------------------------------------------------",
     "brand": "VW",
     "model": "VW ID.4",
-    "description": "Väčší, priestrannejší model elektrického vozidla od VW. Pre tých ktorým ID3 nestačí. Ťažné zariadenie je samozrejmosť.",
+    "description": "Väčší, priestrannejší model elektrického vozidla od VW. Pre tých ktorým ID3 nestačí. Možnosť ťažného zariadenia je samozrejmosť.",
     "img_source": "./pictures/batch_vw-id4.webp",
     "production": true,
     "ac_charging": {
