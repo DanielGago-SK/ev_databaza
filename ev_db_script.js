@@ -215,40 +215,6 @@ function displayPaginationBtns(sites) {
   pgn_index = 0; // nastav index stránkovania na prvú stránku, pri štarte je aktívna prvá strana...(nula)
   displayPaginationStatus(sites, pgn_index);
 }
-// kontrola klikania už je nastavená...
-function paginationClick() {
-  let sites = s_itm_sites;
-  // kontrola "+" - pozor na koniec stránkovania
-  if (this.dataset.pgn_btn == "+") {
-    if (pgn_index < sites - 1) {
-      pgn_index += 1;
-    } else return;
-    // kontrola "-" - pozor na začiatok
-  } else if (this.dataset.pgn_btn == "-") {
-    if (pgn_index > 0) {
-      pgn_index -= 1;
-    } else return;
-  } else {
-    // takže bolo kliknuté na dajaké číslo... Ak nie je také isté ako predchádzajúce tak vykonaj zmenu
-    if (pgn_index == Number(this.dataset.pgn_btn)) {
-      return;
-    } else {
-      pgn_index = Number(this.dataset.pgn_btn);
-    }
-  }
-  displayPaginationStatus(s_itm_sites, pgn_index);
-  // mám index stránky, stačí zavolať funkciu na vykreslenie zoznamu s argumentom indexu
-  displayVehicles(pgn_index);
-  // a potom ešte naskrolujem na začiatok zoznamu áut
-  // treba tam časovač, dajako sa to sekalo bez neho, asi nie je korektne dačo načítané tak okamžite... stáva sa to...
-  setTimeout(() => {
-    window.scrollTo({
-      top: document.getElementById(filter_info.id).offsetTop + 10,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, 30);
-}
 
 // zobrazenie statusu paginácie, tu sa aktivuje aj kontrola klikania
 function displayPaginationStatus(sites, active_site) {
@@ -334,6 +300,41 @@ function displayPaginationStatus(sites, active_site) {
     // a keď ten zoznam už cyklím, tak tomu dám aj kontrolu kliknutia...
     pgn.addEventListener("click", paginationClick);
   });
+}
+
+// kontrola klikania už je nastavená...
+function paginationClick() {
+  let sites = s_itm_sites;
+  // kontrola "+" - pozor na koniec stránkovania
+  if (this.dataset.pgn_btn == "+") {
+    if (pgn_index < sites - 1) {
+      pgn_index += 1;
+    } else return;
+    // kontrola "-" - pozor na začiatok
+  } else if (this.dataset.pgn_btn == "-") {
+    if (pgn_index > 0) {
+      pgn_index -= 1;
+    } else return;
+  } else {
+    // takže bolo kliknuté na dajaké číslo... Ak nie je také isté ako predchádzajúce tak vykonaj zmenu
+    if (pgn_index == Number(this.dataset.pgn_btn)) {
+      return;
+    } else {
+      pgn_index = Number(this.dataset.pgn_btn);
+    }
+  }
+  displayPaginationStatus(s_itm_sites, pgn_index);
+  // mám index stránky, stačí zavolať funkciu na vykreslenie zoznamu s argumentom indexu
+  displayVehicles(pgn_index);
+  // a potom ešte naskrolujem na začiatok zoznamu áut
+  // treba tam časovač, dajako sa to sekalo bez neho, asi nie je korektne dačo načítané tak okamžite... stáva sa to...
+  setTimeout(() => {
+    window.scrollTo({
+      top: document.getElementById(filter_info.id).offsetTop + 10,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, 30);
 }
 
 // tu sa  zobrazí potrebná stránka s vozidlami, pri štarte 0-ltá, neskôr podľa potreby, ako parameter dostávam číslo stránky ktorú treba aktuálne zobraziť
