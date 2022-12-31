@@ -170,15 +170,15 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 /* prvý blok prehľadu - text vľavo */
-.ov_1 {
+.overview_text_left {
   max-width: 70ch;
 }
 
-.ov_1 h3 {
+.overview_text_left h3 {
   padding-top: 1rem;
 }
 
-.ov_1 p:last-of-type {
+.overview_text_left p:last-of-type {
   padding-top: 0.75rem;
 }
 
@@ -207,18 +207,18 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 /* druhý blok prehľadu - čisto iba logo */
-.ov_2 {
+.overview_logo_right {
   margin-left: 2rem;
   width: 450px;
 }
 
-.ov_2 img {
+.overview_logo_right img {
   max-width: 400px;
 }
 
 @media only screen and (max-width: 1000px) {
   /* pod toto rozlíšenie to veľké logo netreba, len tam vypĺňalo miesto pre veľké rozlíšenia */
-  .ov_2 {
+  .overview_logo_right {
     display: none;
   }
 }
@@ -320,6 +320,11 @@ select {
 .check_box input:checked ~ .checkmark,
 .check_box_mark input:checked ~ .checkmark {
   background-color: var(--color_primary);
+}
+
+.check_box input:checked ~ .check_box,
+.check_box_mark input:checked label {
+color:red;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

@@ -87,7 +87,7 @@ async function getData(file) {
   createVehiclesBrandSelect();
   // aktivuje funkciu na výber značky
   selectBrand();
-  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich načítam... 
+  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich načítam...
   input_filter = document.querySelectorAll(`.check_box input[type="checkbox"]`);
   controlFilterCheckbox();
   // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel v databázy
@@ -109,13 +109,27 @@ async function getData(file) {
     );
     input_filter.forEach((input) => (input.checked = false));
     input_filter[0].checked = true;
+    input_filter[0].parentElement.style.fontWeight = "bold";
     displayFilterStatus();
     input_brand = document.querySelectorAll(
       `.check_box_mark input[type="checkbox"]`
     );
     input_brand.forEach((input) => (input.checked = false));
     input_brand[0].checked = true;
+    input_brand[0].parentElement.style.fontWeight = "bold";
     displayBrandStatus();
+    // pre všetky input elementy nastavím automaticky "bold" písmo ak sú "checked", pomocou CCS to nejde, sú to predchádzajúce elementy...
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach((imp) => {
+      // samozrejme po každej zmene stavu to treba prepisovať...
+      imp.addEventListener("change", () => {
+        inputs.forEach((element) => {
+          element.checked
+            ? (element.parentElement.style.fontWeight = "bold")
+            : (element.parentElement.style.fontWeight = "normal");
+        });
+      });
+    });
   }, 2000);
 }
 
@@ -143,7 +157,7 @@ function createVehiclesBrandSelect() {
   /* a uprac ich podľa abecedy... */
   v_brand_unique.sort();
   // najskôr vytvoríme prvý výber - vypnutie filtra značiek...
-  brand_select.innerHTML += `<label class="check_box_mark">Vypnutý filter značiek<input type="checkbox" id="no_mark" checked><span class="checkmark"></span></label><br>`;
+  brand_select.innerHTML += `<label class="check_box_mark">Vypnutý filter značiek<input type="checkbox" id="no_mark"><span class="checkmark"></span></label><br>`;
   /* a filtrovaný zoznam potom prihoď do základu selektora... */
   v_brand_unique.forEach((brand) => {
     brand_select.innerHTML += `<label class="check_box_mark">${brand}<input type="checkbox" id="${brand}"><span class="checkmark"></span></label>`;
@@ -174,13 +188,12 @@ function createVehicleArticles() {
   s_itm_sites = Math.floor(s_itm_lenght / pagination_number);
   // ak bol aj dajaký zbytok po tom delení tak vlastne mám ďalšiu stránku... tak ju pridaj
   // toto vlastne vytvorí korektne aj číslo 1 ak je artiklov menej ako na komplet stránku, čiže viem že mám jednu stránku, aj keď nekompletnú...
-  if (s_itm_lenght % pagination_number !== 0) {
-    s_itm_sites++;
-  }
-  // premenná teraz obsahuje počet stránok ktoré potrebujem zobraziť na pagináciu...
-  // zavolaj funkciu na zobrazenie paginačných tlačidiel
-  // volám ju za každých okolností, ak nie je čo zobraziť tak ona si to sleduje a práve aj premazáva starý, už nepotrebný obsah v pagination bloku ak tam bol! Musím ju teda vždy volať.
-  displayPaginationBtns(s_itm_sites);
+  s_itm_lenght % pagination_number !== 0
+    ? s_itm_sites++ :undefined;
+      // premenná teraz obsahuje počet stránok ktoré potrebujem zobraziť na pagináciu...
+      // zavolaj funkciu na zobrazenie paginačných tlačidiel
+      // volám ju za každých okolností, ak nie je čo zobraziť tak ona si to sleduje a práve aj premazáva starý, už nepotrebný obsah v pagination bloku ak tam bol! Musím ju teda vždy volať.
+      displayPaginationBtns(s_itm_sites);
   // zobraz prvú stranu zoznamu (0), ostatné si zavolá potom funkcia na kontrolu paginácie
   // funkcia si sama ošetruje čo má zobraziť na tej prvej stránke
   displayVehicles(0);
@@ -304,7 +317,7 @@ function displayPaginationStatus(sites, active_site) {
     if (active_site < sites - 3) {
       pgn_html += `<li style = "font-weight: 600;">${pgn_dots}</li>`;
     }
-    // poslednú treba tiež...
+    // poslednú stranu treba tiež...
     pgn_html += `<li data-pgn_btn = "${
       sites - 1
     }" class = "number">${sites}</li>`;
@@ -317,9 +330,7 @@ function displayPaginationStatus(sites, active_site) {
   pgn_li = document.querySelectorAll("#pagination .number");
   // zistím ju len tak že všetky prebehnem a kontrolujem ich data atribút s aktívnou stránkou a tú potom označím. zároveň pre ostatné class selected deaktivujem
   pgn_li.forEach((pgn) => {
-    if (pgn.dataset.pgn_btn == active_site) {
-      pgn.classList.add("selected");
-    } else pgn.classList.remove("selected");
+    pgn.dataset.pgn_btn == active_site ? pgn.classList.add("selected") : pgn.classList.remove("selected");
     // a keď ten zoznam už cyklím, tak tomu dám aj kontrolu kliknutia...
     pgn.addEventListener("click", paginationClick);
   });
@@ -343,18 +354,12 @@ function displayVehicles(page_index) {
   i_start = page_index * pagination_number; //0,1,2...
   i_end = i_start + pagination_number; //0 + 12...
   // ešte musím skontrolovať či aktuálny počet prvkov na zobrazenie nie je menší ako maximálne povolený počet prvkov na stránku... a upraviť teda počet
-  if (i_end > selected_items.length) {
-    i_end = selected_items.length;
-  }
+  i_end > selected_items.length ? i_end = selected_items.length : undefined;
   // a už len zobraziť potrebný počet artiklov na stránku
   // aj tu je klasický for cyklus OK, aj tak pracujem aj s tým indexom...
   for (let index = i_start; index < i_end; index++) {
     let item = selected_items[index];
-    if (!item.production) {
-      production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>`;
-    } else {
-      production = `<p class="production_info" style="color:${green};">Vozidlo sa aktuálne vyrába.</p>`;
-    }
+  !item.production ? production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>` : production = `<p class="production_info" style="color:${green};">Vozidlo sa aktuálne vyrába.</p>`;
     el = document.createElement("article");
     el.setAttribute("data-number", index);
     el.classList.add("item");
@@ -702,7 +707,7 @@ function displayBrandStatus() {
 
 /*** načítaj a spracuj checkbox filtrovania */
 function controlFilterCheckbox() {
-  // pracujem tu s "input_filter" - v ňom sú načítané všetky výbery pre filtre  
+  // pracujem tu s "input_filter" - v ňom sú načítané všetky výbery pre filtre
 
   for (let i of input_filter) {
     i.addEventListener("click", function () {
