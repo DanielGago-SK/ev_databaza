@@ -188,12 +188,11 @@ function createVehicleArticles() {
   s_itm_sites = Math.floor(s_itm_lenght / pagination_number);
   // ak bol aj dajaký zbytok po tom delení tak vlastne mám ďalšiu stránku... tak ju pridaj
   // toto vlastne vytvorí korektne aj číslo 1 ak je artiklov menej ako na komplet stránku, čiže viem že mám jednu stránku, aj keď nekompletnú...
-  s_itm_lenght % pagination_number !== 0
-    ? s_itm_sites++ :undefined;
-      // premenná teraz obsahuje počet stránok ktoré potrebujem zobraziť na pagináciu...
-      // zavolaj funkciu na zobrazenie paginačných tlačidiel
-      // volám ju za každých okolností, ak nie je čo zobraziť tak ona si to sleduje a práve aj premazáva starý, už nepotrebný obsah v pagination bloku ak tam bol! Musím ju teda vždy volať.
-      displayPaginationBtns(s_itm_sites);
+  s_itm_lenght % pagination_number !== 0 ? s_itm_sites++ : undefined;
+  // premenná teraz obsahuje počet stránok ktoré potrebujem zobraziť na pagináciu...
+  // zavolaj funkciu na zobrazenie paginačných tlačidiel
+  // volám ju za každých okolností, ak nie je čo zobraziť tak ona si to sleduje a práve aj premazáva starý, už nepotrebný obsah v pagination bloku ak tam bol! Musím ju teda vždy volať.
+  displayPaginationBtns(s_itm_sites);
   // zobraz prvú stranu zoznamu (0), ostatné si zavolá potom funkcia na kontrolu paginácie
   // funkcia si sama ošetruje čo má zobraziť na tej prvej stránke
   displayVehicles(0);
@@ -296,7 +295,9 @@ function displayPaginationStatus(sites, active_site) {
   pgn_li = document.querySelectorAll("#pagination .number");
   // zistím ju len tak že všetky prebehnem a kontrolujem ich data atribút s aktívnou stránkou a tú potom označím. zároveň pre ostatné class selected deaktivujem
   pgn_li.forEach((pgn) => {
-    pgn.dataset.pgn_btn == active_site ? pgn.classList.add("selected") : pgn.classList.remove("selected");
+    pgn.dataset.pgn_btn == active_site
+      ? pgn.classList.add("selected")
+      : pgn.classList.remove("selected");
     // a keď ten zoznam už cyklím, tak tomu dám aj kontrolu kliknutia...
     pgn.addEventListener("click", paginationClick);
   });
@@ -355,12 +356,14 @@ function displayVehicles(page_index) {
   i_start = page_index * pagination_number; //0,1,2...
   i_end = i_start + pagination_number; //0 + 12...
   // ešte musím skontrolovať či aktuálny počet prvkov na zobrazenie nie je menší ako maximálne povolený počet prvkov na stránku... a upraviť teda počet
-  i_end > selected_items.length ? i_end = selected_items.length : undefined;
+  i_end > selected_items.length ? (i_end = selected_items.length) : undefined;
   // a už len zobraziť potrebný počet artiklov na stránku
   // aj tu je klasický for cyklus OK, aj tak pracujem aj s tým indexom...
   for (let index = i_start; index < i_end; index++) {
     let item = selected_items[index];
-  !item.production ? production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>` : production = `<p class="production_info" style="color:${green};">Vozidlo sa aktuálne vyrába.</p>`;
+    !item.production
+      ? (production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>`)
+      : (production = `<p class="production_info" style="color:${green};">Vozidlo sa aktuálne vyrába.</p>`);
     el = document.createElement("article");
     el.setAttribute("data-number", index);
     el.classList.add("item");

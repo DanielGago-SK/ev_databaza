@@ -18,7 +18,7 @@
   --color_txt: rgb(34, 34, 34);
   --color_primary: rgb(0, 140, 255);
   --color_hell: rgb(118, 193, 255);
-  --color_orange : #ff7300;
+  --color_orange: #ff7300;
 }
 
 /* ! toto musí byť, aby mi pri zastavení skrolovania počas modal okna neposúvalo obsah na kraj do strany... rušil sa vtedy margin auto pre šírku stránky...*/
@@ -338,7 +338,7 @@ select {
 
 .check_box input:checked ~ .check_box,
 .check_box_mark input:checked label {
-color:red;
+  color: red;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
