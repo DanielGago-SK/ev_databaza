@@ -18,6 +18,7 @@
   --color_txt: rgb(34, 34, 34);
   --color_primary: rgb(0, 140, 255);
   --color_hell: rgb(118, 193, 255);
+  --color_orange : #ff7300;
 }
 
 /* ! toto musí byť, aby mi pri zastavení skrolovania počas modal okna neposúvalo obsah na kraj do strany... rušil sa vtedy margin auto pre šírku stránky...*/
@@ -112,7 +113,7 @@ todo len dočasne - info že stránka je vo výstavbe */
   max-width: 40ch;
   margin: 1rem auto 0 auto;
   color: black;
-  background-color: #ff881d;
+  background-color: var(--color_orange);
   text-align: center;
   font-size: 1.5rem;
   overflow-x: hidden;
@@ -167,6 +168,19 @@ todo len dočasne - info že stránka je vo výstavbe */
   margin-right: clamp(1.25rem, 2.5vw, 2.5rem);
   position: relative;
   top: 6px;
+}
+
+.project_only {
+  background-color: var(--color_primary);
+  margin: 1rem 0 0.5rem 0;
+  padding: 0;
+}
+
+.project_only p {
+  color: white;
+  margin: 0;
+  padding: 0 1rem 0.75rem 1rem;
+  font-size: 120%;
 }
 
 /* prvý blok prehľadu - text vľavo */
@@ -671,7 +685,7 @@ todo len dočasne, vymaž potom */
   top: 2rem;
   text-align: center;
   color: black;
-  background-color: #ff881d;
+  background-color: var(--color_orange);
   margin-top: -1.35rem;
   margin-bottom: 0.5rem;
   z-index: 10;
@@ -680,7 +694,7 @@ todo len dočasne, vymaž potom */
   content: "";
   width: calc(100% + 2rem + 1px);
   height: 100%;
-  background-color: #ff881d;
+  background-color: var(--color_orange);
   position: absolute;
   top: 0;
   left: -1rem;
