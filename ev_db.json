@@ -1,8 +1,7 @@
 [
+  {"version": "17.12.2022"},
   {
     "new_item:description": "Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte (prvá musí byť táto, má špeciaĺne prvky v sebe!!!). Oni sa potom aj tak sortujú podľa abecedy... Len nekopírovať túto prvú položku na to, tá je špecifická...",
-    "version_description": "/* iba v prvom objekte je toto info o aktuálnej verzii - poslednej zmene v databázi!!! */",
-    "version": "17.12.2022",
     "start":"iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie! -------------------------------------------------------------------------",
     "descripton_popis_štruktúry_databázy": "*/ (len) takto napríklad môžem napísať nápovedu / komentár do json súboru... tu v prvej položke sú občas komentované možné zápisy!! json inak štandardné komentáre nepodporuje... /*",
     "brand": "VW",
