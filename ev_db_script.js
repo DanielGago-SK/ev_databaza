@@ -60,7 +60,7 @@ function typeWriter() {
 }
 
 /* nahraj databázu - nateraz z vlastného lokálneho servera... jeden .json súbor */
-// nič menej, ako mi bolo pripomenuté - príliž rozsiahle takéto databázy (súbor) prehliadač nezvládne... musí to mať na starosti back-end potom...
+// nič menej, ako mi bolo pripomenuté - príliž rozsiahle takéto databázy (veľký .json súbor) prehliadač nezvládne... musí to mať na starosti back-end potom...
 getData("ev_db.json");
 
 async function getData(file) {
@@ -69,11 +69,13 @@ async function getData(file) {
   database = JSON.parse(myText);
 
   // napíš hneď na stránku koľko modelov databáza obsahuje a ako je aktuálna
-  vehicle_count.innerText = database.length;
-  // a dátum poslednej aktualizácie - je uložený iba v prvom objekte (nesortovanej!) databázy!
+  // dátum poslednej aktualizácie - je uložený samostatne - ako prvý element databázy!
+  // po tom čo sa spracuje sa zmaže...
   last_update.innerText = database[0].version;
+  database.shift();
+  vehicle_count.innerText = database.length;
 
-  // nasledujúce riadky usporiadajú EV podľa abecedy, podľa značky/výrobcu...
+  // nasledujúce riadky usporiadajú EV podľa abecedy => podľa značky/výrobcu...
   function compare(a, b) {
     if (a.brand > b.brand) return 1;
     if (a.brand < b.brand) return -1;
@@ -83,20 +85,19 @@ async function getData(file) {
 
   // databáza je načítaná, volaj ďalšie funkcie
 
-  // zavolá funkciu čo prebehne všetky značky a nastaví správne select blok
+  // zavolá funkciu čo prebehne všetky značky a nastaví správne "filter značiek"
   createVehiclesBrandSelect();
-  // aktivuje funkciu na výber značky
+  // aktivuje sa funkcia na výber značiek
   selectBrand();
-  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich načítam...
+  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich raz načítam, aby sa to vykonalo iba raz...
   input_filter = document.querySelectorAll(`.check_box input[type="checkbox"]`);
   controlFilterCheckbox();
-  // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel v databázy
+  // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel z databázy
   // neskôr budem pracovať s inými - filtrovanými poliami
-  selected_filter = database; // výber podľa filtrov - pri štarte všetky objekty
   selected_brand = database; // výber podľa značky - pri štarte všetky objekty
+  selected_filter = database; // výber podľa filtrov - pri štarte všetky objekty
   // zavolaj funkciu čo vykreslí zoznam na obrazovku
-  // createVehicleArticles() - teraz netreba, volá si to potom nastavenie paginácie samo;
-  // túto funkciu volám aj vždy po tom ako sa zmenia niektoré filtre...
+  // createVehicleArticles() - netreba to volať samostatne, volá si to potom nastavenie paginácie samo. tú funkciu volám aj vždy po tom ako sa zmenia niektoré filtre...
   // todo ako sa predĺži načítavanie databazy v budúcnosti tak tu bude ten čas automaticky pár sekúnd, teraz pre efekt 2 sekundy...
   setTimeout(() => {
     loading_spinner.style.display = "none";
@@ -104,14 +105,14 @@ async function getData(file) {
     pgnSetting();
     // nasledujúce riadky kódu nulujú filtre pri každom reloade stránky... ak to nebolo, tak zostávali "checkbox" občas atívne označené ale v podstate nespracované...
     // po reloade aj tak žiadny filter nechcem...
-    input_filter = document.querySelectorAll(
+    const input_filter = document.querySelectorAll(
       `.check_box input[type="checkbox"]`
     );
     input_filter.forEach((input) => (input.checked = false));
     input_filter[0].checked = true;
     input_filter[0].parentElement.style.fontWeight = "bold";
     displayFilterStatus();
-    input_brand = document.querySelectorAll(
+    const input_brand = document.querySelectorAll(
       `.check_box_mark input[type="checkbox"]`
     );
     input_brand.forEach((input) => (input.checked = false));
@@ -121,7 +122,7 @@ async function getData(file) {
     // pre všetky input elementy nastavím automaticky "bold" písmo ak sú "checked", pomocou CCS to nejde, sú to predchádzajúce elementy...
     const inputs = document.querySelectorAll("input");
     inputs.forEach((imp) => {
-      // samozrejme po každej zmene stavu to treba prepisovať...
+      // samozrejme po každej zmene stavu to treba prepisovať... takže tu dám na to potrebný eventListener
       imp.addEventListener("change", () => {
         inputs.forEach((element) => {
           element.checked
@@ -603,7 +604,15 @@ function make_modal(item_id) {
         <p><b>Ťažné zariadenie:</b> ${t_d}</p>
         ${more_info}
         ${reviews}
-        <div class="arrows">▲ ▼&nbsp;</div>
+        <div class="arrows"><span onclick="modal_content.scrollTo({
+  top: 0,
+  left: 0,
+  behavior: 'smooth'
+})">▲</span>&nbsp;<span onclick="modal_content.scrollTo({
+  top: modal_content.scrollHeight,
+  left: 0,
+  behavior: 'smooth'
+})">▼</span>&nbsp;</div>
         `;
 
   // ! toto potom prípadne vymazať, ale je to výborná kontrola či mám správne zapísané veci v databáze... Každý nový artikel si skúšobne zobrazím a hneď dostanem výsledok kontroly...
