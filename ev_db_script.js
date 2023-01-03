@@ -695,7 +695,7 @@ function displayBrandsStatus() {
   if (input_brand[0].checked) {
     // zobraz všetky značky
     selected_brand = database;
-    filtered_brand.style.color = "black";
+    filtered_brand.style.color = "var(--color_txt)";
     brand = "zobrazujem všetky značky  ";
   } else {
     brand = "";

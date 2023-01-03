@@ -15,7 +15,7 @@
 :root {
   --text_width: 800px;
   /* použité farby */
-  --color_txt: rgb(34, 34, 34);
+  --color_txt: rgb(51, 51, 51);
   --color_primary: rgb(0, 140, 255);
   --color_hell: rgb(118, 193, 255);
   --color_orange: #ff7300;
@@ -58,7 +58,7 @@ h2 {
 }
 
 h3 {
-  font-size: 120%;
+  font-size: 115%;
 }
 
 /*** globálna šírka stránky */
@@ -588,7 +588,7 @@ ale to všetko sa tak generuje až v JS ku... */
 
 #pagination li {
   display: inline;
-  color: black;
+  color: var(--color_txt);
   padding: 0.25rem 0.75rem;
   text-decoration: none;
   border-radius: 10px;
