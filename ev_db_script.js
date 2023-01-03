@@ -369,7 +369,7 @@ function displayVehicles(page_number) {
     el.setAttribute("data-number", index);
     el.classList.add("item");
     htmldata = `
-  <div><h3 class="model_info">${item.model}</h3>
+  <div><h2 class="model_info">${item.model}</h2>
                 <img src="${item.img_source}" data-model_id="${index}" alt="obrázok - EV"></div>
                         <p>${item.description}</p>
                         <div>${production}
@@ -577,7 +577,7 @@ function make_modal(item_id) {
 
   /* a teraz môžem vytvoriť obsah modal bloku s vlastnosťami vybraného modelu */
   modal_content.innerHTML = `
-  <h3 class="model_info">${item.model}</h3>
+  <h2 class="model_info">${item.model}</h2>
   <p class="test_db_info">Databáza obsahuje prevažne testovacie údaje!</p>
                 <img src="${item.img_source}" alt="obrázok - EV">
                         <p>${item.description}</p>

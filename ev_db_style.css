@@ -53,8 +53,12 @@ h3 {
   color: black;
 }
 
-h3 {
+h2 {
   font-size: 140%;
+}
+
+h3 {
+  font-size: 120%;
 }
 
 /*** globálna šírka stránky */
@@ -195,7 +199,7 @@ todo len dočasne - info že stránka je vo výstavbe */
   max-width: var(--text_width);
 }
 
-.overview_text_left h3 {
+.overview_text_left h2 {
   padding-top: 1rem;
 }
 
@@ -266,7 +270,7 @@ todo len dočasne - info že stránka je vo výstavbe */
 
 /*** aside - filtering */
 
-.filtering h3 {
+.filtering h2 {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
 }
@@ -380,7 +384,7 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 /*** sekcia - filter info */
-.filter_info h3 {
+.filter_info h2 {
   padding: 1rem 0 0.4rem 0;
 }
 
@@ -530,7 +534,7 @@ ale to všetko sa tak generuje až v JS ku... */
   cursor: pointer;
 }
 
-.item h3 {
+.item h2 {
   padding-bottom: 0.5rem;
 }
 
@@ -661,7 +665,7 @@ ale to všetko sa tak generuje až v JS ku... */
   }
 }
 
-#modal_content h3 {
+#modal_content h2 {
   text-align: center;
   padding: 1rem 0 1.5rem 0;
   position: -webkit-sticky;
@@ -671,7 +675,7 @@ ale to všetko sa tak generuje až v JS ku... */
   z-index: 5;
 }
 
-#modal_content h3:before {
+#modal_content h2:before {
   content: "";
   width: calc(100% + 2rem + 1px);
   height: 100%;
