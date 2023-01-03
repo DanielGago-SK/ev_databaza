@@ -111,14 +111,14 @@ async function getData(file) {
     input_filter.forEach((input) => (input.checked = false));
     input_filter[0].checked = true;
     input_filter[0].parentElement.style.fontWeight = "bold";
-    displayFilterStatus();
+    displayFiltersStatus();
     const input_brand = document.querySelectorAll(
       `.check_box_mark input[type="checkbox"]`
     );
     input_brand.forEach((input) => (input.checked = false));
     input_brand[0].checked = true;
     input_brand[0].parentElement.style.fontWeight = "bold";
-    displayBrandStatus();
+    displayBrandsStatus();
     // pre všetky input elementy nastavím automaticky "bold" písmo ak sú "checked", pomocou CCS to nejde, sú to predchádzajúce elementy...
     const inputs = document.querySelectorAll("input");
     inputs.forEach((imp) => {
@@ -289,7 +289,7 @@ function displayPaginationStatus(sites, active_site) {
     }" class = "number">${sites}</li>`;
     pgn_html += `<li data-pgn_btn = "+" class = "number">&raquo;</li>`;
   }
-  // zobraz to celé na stránku
+  // zobraz to celé na stránku - do <ul> elementu
   pagination.innerHTML = pgn_html;
   pagination.style.display = "flex";
   // označ aktívnu stránku ako selected
@@ -340,7 +340,7 @@ function paginationClick() {
 }
 
 // tu sa  zobrazí potrebná stránka s vozidlami, pri štarte 0-ltá, neskôr podľa potreby, ako parameter dostávam číslo stránky ktorú treba aktuálne zobraziť
-function displayVehicles(page_index) {
+function displayVehicles(page_number) {
   section_result.innerHTML = ""; // premaž obsah
   // kontrola prázdneho zoznamu a oznámenie o tom na obrazovke
   if (selected_items.length == 0) {
@@ -354,7 +354,7 @@ function displayVehicles(page_index) {
 
   // štart a koniec indexov pre zoznam ráta aj s aktuálnou stránkou!
   // na ďalších stranách sú prvky s násobkami indexov
-  i_start = page_index * pagination_number; //0,1,2...
+  i_start = page_number * pagination_number; //0,1,2...
   i_end = i_start + pagination_number; //0 + 12...
   // ešte musím skontrolovať či aktuálny počet prvkov na zobrazenie nie je menší ako maximálne povolený počet prvkov na stránku... a upraviť teda počet
   i_end > selected_items.length ? (i_end = selected_items.length) : undefined;
@@ -665,14 +665,14 @@ function selectBrand() {
         // takže ju pre istotu označím ako "checked"
         this.checked = true;
         // a zobrazím stav
-        displayBrandStatus();
+        displayBrandsStatus();
         return;
       }
       // inak - prvú deaktivuj, bude aktívna dajaká iná, preveríme...
       input_brand[0].checked = false;
       if (this.checked) {
         //ak je tá stlačená teraz aktívna, tak OK, spracujem - zmena zobrazenia
-        displayBrandStatus();
+        displayBrandsStatus();
         return;
       }
       // ak ale sa deaktivovala, tak kontrola či je vôbec teraz dajaká aktívna...
@@ -680,18 +680,18 @@ function selectBrand() {
       for (let input of input_brand) {
         if (input.checked == true) {
           // ak čo i len jedna voľba bude aktívna, tak koniec cyklu a môžem zobrazovať
-          displayBrandStatus();
+          displayBrandsStatus();
           return;
         }
       }
       // nič nebolo aktívne - zostala teda len jediná možnosť - aktivovať "žiadny filter"
       input_brand[0].checked = true;
-      displayBrandStatus();
+      displayBrandsStatus();
     });
   }
 }
 
-function displayBrandStatus() {
+function displayBrandsStatus() {
   if (input_brand[0].checked) {
     // zobraz všetky značky
     selected_brand = database;
@@ -734,7 +734,7 @@ function controlFilterCheckbox() {
         // takže ju pre istotu označím ako "checked"
         this.checked = true;
         // a zobrazím stav
-        displayFilterStatus();
+        displayFiltersStatus();
         return;
       }
       // inak - prvú deaktivuj, bude aktívna dajaká iná, preveríme...
@@ -748,7 +748,7 @@ function controlFilterCheckbox() {
         if (this.id == "production_false") {
           document.getElementById("production_true").checked = false;
         }
-        displayFilterStatus();
+        displayFiltersStatus();
         return;
       }
       // ak ale sa deaktivovala, tak kontrola či je vôbec teraz dajaká aktívna...
@@ -756,18 +756,18 @@ function controlFilterCheckbox() {
       for (let input of input_filter) {
         if (input.checked == true) {
           // ak čo i len jedna voľba bude aktívna, tak koniec cyklu a môžem zobrazovať
-          displayFilterStatus();
+          displayFiltersStatus();
           return;
         }
       }
       // nič nebolo aktívne - zostala teda len jediná možnosť - aktivovať "žiadny filter"
       input_filter[0].checked = true;
-      displayFilterStatus();
+      displayFiltersStatus();
     });
   }
 }
 
-function displayFilterStatus() {
+function displayFiltersStatus() {
   // tu sa spracuje výsledný stav filtrov
 
   // voľba bez filtru sa vybaví hneď a jednoducho, nech sa nezdržujeme...
