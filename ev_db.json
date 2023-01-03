@@ -1,8 +1,11 @@
 [
-  {"version": "17.12.2022"},
   {
-    "new_item:description": "Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte (prvá musí byť táto, má špeciaĺne prvky v sebe!!!). Oni sa potom aj tak sortujú podľa abecedy... Len nekopírovať túto prvú položku na to, tá je špecifická...",
-    "start":"iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie! -------------------------------------------------------------------------",
+    "version": "17.12.2022",
+    "note": "tieto prvé dva riadky tu musia byť vždy ako prvé - je tu aktuálna verzia databázy - posledná zmena!!!"
+  },
+  {
+    "new_item_description": "Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte.",
+    "start": "iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie! -------------------------------------------------------------------------",
     "descripton_popis_štruktúry_databázy": "*/ (len) takto napríklad môžem napísať nápovedu / komentár do json súboru... tu v prvej položke sú občas komentované možné zápisy!! json inak štandardné komentáre nepodporuje... /*",
     "brand": "VW",
     "model": "VW e-Up 1. generácia",
@@ -27,14 +30,14 @@
       "useable_max": null
     },
     "range": {
-      "WLTP_min": 180,
+      "WLTP_min": 133,
       "WLTP_max": null,
       "min": 70,
       "max": 155
     },
     "efficiency": "10.3 - 22.9",
     "vehicle_seats": 4,
-    "engine_power_min": 62,
+    "engine_power_min": 60,
     "engine_power_max": null,
     "AWD": false,
     "akceleration_min": 12.4,
@@ -43,7 +46,7 @@
     "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
     "bat_cooling_active": false,
     "heat_pump": false,
-    "h_p_info_info":"/*informácia k tepelnému čerpadlu - bude v zátvorke... Napríklad že je iba za príplatok a tak...*/",
+    "h_p_info_info": "/*informácia k tepelnému čerpadlu - bude v zátvorke... Napríklad že je iba za príplatok a tak...*/",
     "h_p_info": null,
     "roof_rack": true,
     "towing_device": true,
@@ -53,14 +56,18 @@
     "plus_info": [
       "!POZOR - od roku 2017 bol mierny facelift a napríklad na výbave sa to pozná podľa toho či má vozidlo držiak pre Garmin navigáciu, alebo možnosť pripojiť vlastný telefón + tlačidlá na volante a mnoho iných detailov. Technicky zmeny ale neboli výrazné.",
       "+deliteľné zadné sedadlá",
-      "+vyhrievané čelné sklo",
+      "+aj vyhrievané čelné sklo",
       "malá batéria, ale rýchle nabíjanie",
-      "*na prehrievanie batérie v lete (a tým pádom spomalené DC nabíjanie) si treba dávať pozor..."
+      "*na prehrievanie batérie v lete (a tým pádom spomalené DC nabíjanie) si ale treba dávať pozor..."
     ],
     "reviews": [
       {
-        "text": "ev-databáza.de",
+        "text": "ev-databáza.de (facelift)",
         "link": "https://ev-database.de/pkw/1081/Volkswagen-e-Up"
+      },
+      {
+        "text": "ev-databáza.de (old)",
+        "link": "https://ev-database.de/pkw/1041/Volkswagen-e-Up"
       },
       {
         "text": "411km výlet na tomto vozidle",
@@ -76,48 +83,48 @@
     "img_source": "./pictures/batch_bmw_i3.webp",
     "production": false,
     "ac_charging": {
-      "value_min": 11,
-      "value_max": null,
-      "phases_min": 3,
-      "phases_max": null
+      "value_min": 7.4,
+      "value_max": 11,
+      "phases_min": 1,
+      "phases_max": 3
     },
     "dc_charging": {
-      "value_min": 49,
-      "value_max": null
+      "value_min": 47,
+      "value_max": 49
     },
     "battery_capacity": {
-      "nominal_min": 42.2,
-      "nominal_max": null,
-      "useable_min": 37.9,
-      "useable_max": null
+      "nominal_min": 21.6,
+      "nominal_max": 42.2,
+      "useable_min": 18.8,
+      "useable_max": 37.9
     },
     "range": {
-      "WLTP_min": 230,
-      "WLTP_max": null,
-      "min": 160,
-      "max": 355
+      "WLTP_min": 160,
+      "WLTP_max": 308,
+      "min": 115,
+      "max": 235
     },
-    "efficiency": 164,
+    "efficiency": 161,
     "vehicle_seats": 4,
     "engine_power_min": 135,
     "engine_power_max": null,
     "AWD": false,
     "akceleration_min": 6.9,
-    "akceleration_max": null,
-    "weight": 1530,
-        "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
+    "akceleration_max": 7.3,
+    "weight": 1345,
+    "status_info": "ak dám pre položky bat cooling, heat pump, roof rack a towing device '?', tak je to neznáme a bude to tak vyhodnotené!!",
     "bat_cooling_active": true,
     "heat_pump": "?",
     "h_p_info": null,
     "roof_rack": "?",
     "towing_device": "?",
-        "t_d_restriction_description": "ak je dajaké obmedzenie, tak na začiatku použiť * a text bude oranžový, inak bude text čierny, ako doplňujúce info",
+    "t_d_restriction_description": "ak je dajaké obmedzenie, tak na začiatku použiť * a text bude oranžový, inak bude text čierny, ako doplňujúce info",
     "t_d_restriction": "",
     "plus_info_description": "/* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť / výhoda. Ak nie je žiadny znak, text bude normálne základný */",
     "plus_info": [
       "+vozidlo počas svojej výroby postupne dostalo 3 rôzne veľkosti batérie (vždy + kapacita) a aj iné detaily. Tieto novšie a výkonnejšie batérie idú použiť aj do starších modelov a tak si majitelia starších kusov občas urobia upgrade...",
       "na začiatkoch bola aj verzia REX - s pomocným spaľovacím motorom, ktorý ale bol iba generátor elektrickej energie",
-      "*DC nabíjanie je iba 49kW, ale vďaka termomenežmentu batérie je stabilne výkonné",
+      "*DC nabíjanie je iba 49kW, ale vďaka termomenežmentu batérie je relatívne stabilne výkonné",
       "+karoséria je z uhlíkovývh vlákien a aj v interéri sú použité netradičné materiály a na tú dobu aj riešenia (napr. ovládač smeru jazdy) ktoré sa u EV používajú doteraz",
       "zadné dvere sa otvárajú proti smeru jazdy"
     ],
@@ -189,12 +196,13 @@
         "link": "https://ev-database.org/car/1546/Citroen-e-Berlingo-M-50-kWh"
       },
       {
-        "text":  "ev-database - variant XL",
+        "text": "ev-database - variant XL",
         "link": "https://ev-database.org/car/1547/Citroen-e-Berlingo-XL-50-kWh"
       },
       {
         "text": "video recenzia na YT - Elektromobil",
-        "link": "https://www.youtube.com/watch?v=9Qepa7JoJzw&t=1566s&ab_channel=Elektromobil"}
+        "link": "https://www.youtube.com/watch?v=9Qepa7JoJzw&t=1566s&ab_channel=Elektromobil"
+      }
     ]
   },
   {
@@ -313,7 +321,7 @@
         "link": "https://www.youtube.com/watch?v=XxN23K_6rl0&t=849s&ab_channel=MotoringTA3"
       },
       {
-        "text":"Test od Techbox.sk",
+        "text": "Test od Techbox.sk",
         "link": "https://www.techbox.sk/dacia-spring-electric-konecne-elektromobil-dostupny-takmer-pre-kazdeho/"
       },
       {
@@ -510,8 +518,10 @@
     "roof_rack": "?",
     "towing_device": false,
     "t_d_restriction": "",
-    "plus_info": ["+ako jazdenka je to relatívne lacné EV",
-  "daňou za celkové rozmery a usporiadanie je menej stabilná jazda, vozidlo je úzke, vysoké a má menšie kolesá"],
+    "plus_info": [
+      "+ako jazdenka je to relatívne lacné EV",
+      "daňou za celkové rozmery a usporiadanie je menej stabilná jazda, vozidlo je úzke, vysoké a má menšie kolesá"
+    ],
     "reviews": []
   },
   {
