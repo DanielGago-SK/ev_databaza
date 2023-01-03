@@ -698,6 +698,19 @@ todo len dočasne, vymaž potom */
   margin-top: -1rem;
   margin-bottom: 0.5rem;
   z-index: 10;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    color: black;
+  }
+  50% {
+    color: var(--color_orange);
+  }
+  100% {
+    color: black;
+  }
 }
 .test_db_info::before {
   content: "";
