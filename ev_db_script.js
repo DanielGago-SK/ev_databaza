@@ -183,6 +183,8 @@ function createVehicleArticles() {
 
   // kontrola dĺžky celého zoznamu artiklov
   s_itm_lenght = selected_items.length;
+  // zobraz počet vozidiel ktoré prešli filtrami a dajú sa zobraziť...
+  vehicle_to_display.innerText = s_itm_lenght;
   // zisťujem potrebný počet stránok zoznamu (pagination)
   // najskôr zistím koľkokrát mám danú hodnotu - počet celých stránok
   // premenná pagination_number má nastavený maximálny počet artiklov na stránku
@@ -695,11 +697,11 @@ function displayBrandsStatus() {
   if (input_brand[0].checked) {
     // zobraz všetky značky
     selected_brand = database;
-    filtered_brand.style.color = "var(--color_txt)";
+    filtered_brands.style.color = "var(--color_txt)";
     brand = "zobrazujem všetky značky  ";
   } else {
     brand = "";
-    filtered_brand.style.color = "red";
+    filtered_brands.style.color = "red";
     input_brand.forEach((element) => {
       if (element.checked) {
         vehicles = 0;
@@ -713,7 +715,7 @@ function displayBrandsStatus() {
       }
     });
   }
-  filtered_brand.innerHTML = brand.slice(0, -2);
+  filtered_brands.innerHTML = brand.slice(0, -2);
   /* a zavolaj funkciu na prekreslenie zoznamu áut na stránke */
   createVehicleArticles();
 }

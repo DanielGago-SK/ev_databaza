@@ -104,7 +104,7 @@
                 <p>POZOR!!!<br>Nejedná sa o "originálnu plnohodnotnú databázu", celé je to skôr projekt na osvojenie si
                     tvorby
                     takýchto
-                    "webových aplikácií" !!!</p>
+                    "webových aplikácií" a v podstate prezentácia mojich aktuálnych schopností !!!</p>
             </div>
         </section>
         <section class="overview">
@@ -115,18 +115,20 @@
                         základných
                         elektrických parametroch
                     </li>
-                    <li> <b>možnosť filtrovania</b> áut podľa konkrétných požiadaviek na dajakú vlastnosť, výbavu (napríklad
+                    <li> <b>možnosť filtrovania</b> áut podľa konkrétných požiadaviek na dajakú vlastnosť, výbavu
+                        (napríklad
                         možnosť nosičov, ťažného, počet miest), ale aj podľa výrobcu. Filtre fungujú súčasne a zobrazuje
                         iba vozidlá ktoré spĺňajú všetky požadované parametre!</li>
                     <li> databáza obsahuje aj <b>odkazy na rôzne zaujímavé SK/CZ recenzie</b> daného modelu</li>
-                    <li> a sú tu doplnené / vypichnuté aj <b>zaujímavé konkrétne vlastnosti daného modelu</b>, ktoré sa oplatí
+                    <li> a sú tu doplnené / vypichnuté aj <b>zaujímavé konkrétne vlastnosti daného modelu</b>, ktoré sa
+                        oplatí
                         poznať ak dakto uvažuje o jeho kúpe</li>
                 </ul>
                 <p>Väčšinu údajov o vozidlách som čerpal zo stránky: <a href="https://ev-database.org" target="_blank"
                         rel="noopener noreferrer">ev-database.org</a>, alebo priamo z podkladov výrobcov.<br>
                     <b>Databáza aktuálne obsahuje <span id="vehicle_count">?</span> modelov.</b><br>
                     (Dátum poslednej aktualizácie: <span id="last_update">--.--.--</span>.)<br>
-                <p style="color:red;">POZOR - databáza nie je ešte dokončená pre ostrú prádzku!!</p>
+                <p style="color:red;">POZOR - databáza nie je ešte dokončená pre ostrú prevádzku!!</p>
                 <p>Pre lepší komfort prezerania je tu možné nastaviť maximálny počet modelov na stránku:</p>
                 <p class="pgn"><span data-pgn="3">3</span><span data-pgn="4">4</span><span data-pgn="6">6</span><span
                         data-pgn="8">8</span><span data-pgn="9">9</span><span data-pgn="12">12</span></p>
@@ -236,6 +238,17 @@
             </svg>
             <section class="filters">
                 <h3>Vyber filtre pre vlastnosti (aj kombinácie sú možné):</h3>
+                <p style="margin-top: 0.35rem;"><span class="info_btn"
+                        onclick="document.getElementById('filters_info').classList.toggle('show');">(Klikni
+                        pre viac informácií)</span></p>
+                <p class="filtering_info" id="filters_info"
+                    onclick="document.getElementById('filters_info').classList.remove('show');">(Filter zobrazí aj
+                    vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
+                    napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda možná,
+                    ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť presnejšie
+                    ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely, kde je
+                    istota že daná vlastnosť naozaj nie je. <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
+                        nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky!</b>)</p>
                 <label class="check_box">žiadny filter, zobrazujem všetko<input type="checkbox" id="filter_off">
                     <span class="checkmark"></span></label>
                 <br>
@@ -279,12 +292,6 @@
                 <label class="check_box">iba už nevyrábané modely<input type="checkbox" id="production_false"><span
                         class="checkmark"></span>
                 </label>
-                <p class="filtering_info">(Filter zobrazí aj vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
-                    napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda možná,
-                    ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť presnejšie
-                    ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely, kde je
-                    istota že daná vlastnosť naozaj nie je. <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
-                        nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky!</b>)</p>
             </section>
 
             <!-- mám aj svg element pre sortovanie, ale nateraz nepoužité... -->
@@ -332,11 +339,17 @@
         <div class="line"></div>
         <section class="filter_info" id="filter_info">
             <h2>Zobrazené vozidlá z katalógu:</h2>
-            <!-- <p class="more_info">(pre viac informácií klini: <span>(i)</span>)</p> -->
-            <p class="filtering_info">(Číslo pri značke označuje celkový počet vozidiel danej značky v databáze, ale ak
+            <span class="info_btn" onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
+                pre viac informácií)</span>
+            <p style="height: 0;">
+            <p class="filtering_info" id="filtering_info"
+                onclick="document.getElementById('filtering_info').classList.remove('show');">
+                (Číslo pri značke označuje celkový počet vozidiel danej značky v databáze, ale ak
                 to aktuálny filter nedovolí, tak nemusia tu byť všetky zobrazené!)</p>
-            <p>Značky: <span id="filtered_brand">zobrazujem všetky značky</span></p>
+            </p>
+            <p>Značky: <span id="filtered_brands">zobrazujem všetky značky</span></p>
             <p>Aktívne filtre: <span id="filters">žiadny filter, zobrazujem všetko</span></p>
+            <p>Počet vozidiel na zobrazenie: <span id="vehicle_to_display"></span></p>
         </section>
 
 
@@ -348,7 +361,7 @@
         </section>
 
         <section class="pagination">
-            <ul id = "pagination">
+            <ul id="pagination">
                 <!-- obsah zabezpečuje JS! -->
             </ul>
         </section>

@@ -270,6 +270,10 @@ todo len dočasne - info že stránka je vo výstavbe */
 
 /*** aside - filtering */
 
+.filtering {
+  max-width: var(--text_width);
+}
+
 .filtering h2 {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
@@ -376,14 +380,56 @@ todo len dočasne - info že stránka je vo výstavbe */
   transform: rotate(45deg);
 }
 
-.filtering_info {
-  /* popis ako fungujú filtre */
-  font-size: 15px;
+.filters .info_btn {
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1rem;
   font-style: italic;
-  max-width: var(--text_width);
+  color: var(--color_primary);
+}
+
+.filters .filtering_info {
+  /* popis ako fungujú filtre */
+  position: absolute;
+  background-color: var(--color_primary);
+  color: white;
+  z-index: 100;
+  max-width: calc(800px - 2rem);
+  width: calc(100% - 4rem);
+  margin-inline: 1rem;
+  padding: 0rem;
+  border: 0px solid var(--color_primary);
+  border-radius: 14px;
+  max-height: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  overflow-y: hidden;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.filtering_info b {
+  color: white;
+}
+
+.filters span {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.filters .show {
+  padding: 1rem;
+  border: 2px solid var(--color_primary);
+  max-height: 800px;
 }
 
 /*** sekcia - filter info */
+
+.filter_info {
+  max-width: var(--text_width);
+}
+
 .filter_info h2 {
   padding: 1rem 0 0.4rem 0;
 }
@@ -400,15 +446,39 @@ todo len dočasne - info že stránka je vo výstavbe */
 
 .filter_info .filtering_info {
   /* popis ako fungujú filtre */
+  position: absolute;
+  background-color: rgb(221, 221, 221);
+  background-color: var(--color_primary);
+  color: white;
+  z-index: 100;
+  max-width: calc(800px - 2rem);
+  width: calc(100% - 4rem);
+  margin-inline: 1rem;
+  padding: 0rem;
+  border: 0px solid var(--color_primary);
+  border-radius: 14px;
+  max-height: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  overflow-y: hidden;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 1rem;
   font-style: italic;
-  max-width: 70ch;
   margin-bottom: 0.35rem;
 }
+.filter_info .show {
+  padding: 1rem;
+  border: 2px solid var(--color_primary);
+  max-height: 800px;
+}
 
-.brand_select {
-  max-width: 80ch;
+.filter_info .info_btn {
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color_primary);
 }
 
 /*** sekcia s výsledkami - vozidlami */
@@ -698,7 +768,20 @@ todo len dočasne, vymaž potom */
   margin-top: -1rem;
   margin-bottom: 0.5rem;
   z-index: 10;
+  -webkit-animation: pulse 1.5s ease-in-out infinite;
   animation: pulse 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    color: black;
+  }
+  50% {
+    color: var(--color_orange);
+  }
+  100% {
+    color: black;
+  }
 }
 
 @keyframes pulse {
