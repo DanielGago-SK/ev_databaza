@@ -287,6 +287,45 @@ todo len dočasne - info že stránka je vo výstavbe */
   margin: 0.75rem 0 0.5rem 0;
 }
 
+.brand_select .filtering_info {
+  /* popis ako fungujú filtre */
+  position: absolute;
+  background-color: rgb(221, 221, 221);
+  background-color: var(--color_primary);
+  color: white;
+  z-index: 100;
+  max-width: calc(800px - 2rem);
+  width: calc(100% - 4rem);
+  margin-inline: 1rem;
+  padding: 0rem;
+  border-radius: 14px;
+  max-height: 0;
+  -webkit-transition: max-height 0.3s ease-in-out,
+    padding 0.05s 0.25s ease-in-out;
+  -o-transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
+  transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
+  overflow-y: hidden;
+  font-weight: normal;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 0.35rem;
+}
+.brand_select .show {
+  -webkit-transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
+  -o-transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
+  transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
+  padding: 1rem;
+  max-height: 250px;
+}
+
+.brand_select .info_btn {
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color_primary);
+}
+
 /** filter pre vlastnosti */
 /* toto je jedno z mála použitých hotových riešení */
 /* samozrejme viem ako tam čo funguje a mám to doladené pre svoje potreby... */
@@ -398,12 +437,12 @@ todo len dočasne - info že stránka je vo výstavbe */
   width: calc(100% - 4rem);
   margin-inline: 1rem;
   padding: 0rem;
-  border: 0px solid var(--color_primary);
   border-radius: 14px;
   max-height: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out,
+    padding 0.05s 0.45s ease-in-out;
+  -o-transition: max-height 0.5s ease-in-out, padding 0.05s 0.45s ease-in-out;
+  transition: max-height 0.5s ease-in-out, padding 0.05s 0.37s ease-in-out;
   overflow-y: hidden;
   font-size: 1rem;
   font-style: italic;
@@ -419,9 +458,11 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 .filters .show {
+  -webkit-transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
+  -o-transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
+  transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
   padding: 1rem;
-  border: 2px solid var(--color_primary);
-  max-height: 800px;
+  max-height: 700px;
 }
 
 /*** sekcia - filter info */
@@ -442,43 +483,6 @@ todo len dočasne - info že stránka je vo výstavbe */
 .filter_info span {
   font-weight: normal;
   font-size: 1rem;
-}
-
-.filter_info .filtering_info {
-  /* popis ako fungujú filtre */
-  position: absolute;
-  background-color: rgb(221, 221, 221);
-  background-color: var(--color_primary);
-  color: white;
-  z-index: 100;
-  max-width: calc(800px - 2rem);
-  width: calc(100% - 4rem);
-  margin-inline: 1rem;
-  padding: 0rem;
-  border: 0px solid var(--color_primary);
-  border-radius: 14px;
-  max-height: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  overflow-y: hidden;
-  font-weight: normal;
-  font-size: 1rem;
-  font-style: italic;
-  margin-bottom: 0.35rem;
-}
-.filter_info .show {
-  padding: 1rem;
-  border: 2px solid var(--color_primary);
-  max-height: 800px;
-}
-
-.filter_info .info_btn {
-  cursor: pointer;
-  font-weight: normal;
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--color_primary);
 }
 
 /*** sekcia s výsledkami - vozidlami */
@@ -768,15 +772,21 @@ todo len dočasne, vymaž potom */
   margin-top: -1rem;
   margin-bottom: 0.5rem;
   z-index: 10;
-  -webkit-animation: pulse 1.5s ease-in-out infinite;
-  animation: pulse 1.5s ease-in-out infinite;
+  -webkit-animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 @-webkit-keyframes pulse {
   0% {
     color: black;
   }
-  50% {
+  59% {
+    color: black;
+  }
+  60% {
+    color: var(--color_orange);
+  }
+  99% {
     color: var(--color_orange);
   }
   100% {
@@ -788,7 +798,13 @@ todo len dočasne, vymaž potom */
   0% {
     color: black;
   }
-  50% {
+  59% {
+    color: black;
+  }
+  60% {
+    color: var(--color_orange);
+  }
+  99% {
     color: var(--color_orange);
   }
   100% {

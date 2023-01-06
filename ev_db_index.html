@@ -192,7 +192,13 @@
             </svg>
             <div class="brand_select">
                 <h3>Ktoré značky preferuješ?</h3>
-                <div id="brand_select"></div>
+                <span class="info_btn" onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
+                                pre viac informácií)</span>
+                            <p class="filtering_info" id="filtering_info"
+                                onclick="document.getElementById('filtering_info').classList.remove('show');">
+                                (Číslo pri značke označuje celkový počet vozidiel danej značky v databáze. Ak
+                                to aktuálne filtre nedovolia, tak nemusia byť vždy všetky zobrazené!)</p>
+                <div id="brand_select"><!-- obsah generuje JS --></div>
             </div>
 
             <svg class="svg_filter" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -339,14 +345,6 @@
         <div class="line"></div>
         <section class="filter_info" id="filter_info">
             <h2>Zobrazené vozidlá z katalógu:</h2>
-            <span class="info_btn" onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
-                pre viac informácií)</span>
-            <p style="height: 0;">
-            <p class="filtering_info" id="filtering_info"
-                onclick="document.getElementById('filtering_info').classList.remove('show');">
-                (Číslo pri značke označuje celkový počet vozidiel danej značky v databáze, ale ak
-                to aktuálny filter nedovolí, tak nemusia tu byť všetky zobrazené!)</p>
-            </p>
             <p>Značky: <span id="filtered_brands">zobrazujem všetky značky</span></p>
             <p>Aktívne filtre: <span id="filters">žiadny filter, zobrazujem všetko</span></p>
             <p>Počet vozidiel na zobrazenie: <span id="vehicle_to_display"></span></p>

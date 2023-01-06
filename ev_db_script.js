@@ -161,7 +161,14 @@ function createVehiclesBrandSelect() {
   brand_select.innerHTML += `<label class="check_box_mark">Vypnutý filter značiek<input type="checkbox" id="no_mark"><span class="checkmark"></span></label><br>`;
   /* a filtrovaný zoznam potom prihoď do základu selektora... */
   v_brand_unique.forEach((brand) => {
-    brand_select.innerHTML += `<label class="check_box_mark">${brand}<input type="checkbox" id="${brand}"><span class="checkmark"></span></label>`;
+    //ešte pre každú značku zistím počet...
+    count = 0
+    for (const vehicle of database) {
+      if (vehicle.brand == brand) {
+        count++;
+      }
+    }
+    brand_select.innerHTML += `<label class="check_box_mark">${brand}&nbsp;(${count})<input type="checkbox" id="${brand}"><span class="checkmark"></span></label>`;
   });
   // a hneď to načítaj, neskôr s nimi pracujem...
   input_brand = document.querySelectorAll(
@@ -704,14 +711,12 @@ function displayBrandsStatus() {
     filtered_brands.style.color = "red";
     input_brand.forEach((element) => {
       if (element.checked) {
-        vehicles = 0;
         for (const vehicle of database) {
           if (vehicle.brand == element.id) {
             selected_brand.push(vehicle);
-            vehicles++;
           }
         }
-        brand += element.id + "&nbsp;(" + vehicles + "); ";
+        brand += element.id + "; ";
       }
     });
   }
