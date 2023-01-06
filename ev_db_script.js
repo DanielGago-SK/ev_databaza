@@ -1,7 +1,14 @@
+// vstupné filtre:
+const input_filters = document.querySelectorAll(
+  `.check_box input[type="checkbox"]`
+);
+// modal okno
 const modal_content = document.querySelector("#modal_content");
 // základná stránka sa pomocou opacity potom pri aktívnom modal okne utlmuje!
 const basic_page = document.querySelector(".width");
+// výsledný zoznam vozidiel na zobrazenie - 1 stránka
 const section_result = document.querySelector(".result");
+// todo dočasný spinner na efekt načítavania databázy
 const loading_spinner = document.querySelector("#loading_spinner_block");
 // pgn span - to sú všetky tlačidlá pre výber počtu modelov na stránku
 const pgn_setting = document.querySelectorAll(".pgn span");
@@ -31,7 +38,7 @@ const green = "#009f00";
 const red = "#ff0000";
 
 /*** efekt s nadpisom ***/
-// nasjkôr si ho vytiahnem z obsahu, ak ho budem chcieť meniť tak stačí normálne v html...
+// najskôr si ho vytiahnem z obsahu, ak ho budem chcieť meniť tak stačí normálne v html...
 h1_txt = document.querySelector("#h1_txt");
 // a jeho vnútorný text
 h1_string = h1_txt.innerText;
@@ -44,7 +51,7 @@ for (let index = 0; index < h1_string.length; index++) {
   sp.innerText = h1_string.charAt(index);
   h1_txt.appendChild(sp);
 }
-// stále nič nevidno, text má stále farbu pozadia, ale miesto pre text mám stále rezervované...
+// stále nič nevidno, text má stále farbu pozadia, ale miesto pre text mám už rezervované...
 
 // a idem postupne meniť farbu span písmen - efekt akoby postupného písania textu
 const spans = document.querySelectorAll("#h1_txt span");
@@ -60,8 +67,14 @@ function typeWriter() {
 }
 
 /* nahraj databázu - nateraz z vlastného lokálneho servera... jeden .json súbor */
-// nič menej, ako mi bolo pripomenuté - príliž rozsiahle takéto databázy (veľký .json súbor) prehliadač nezvládne... musí to mať na starosti back-end potom...
-getData("ev_db.json");
+// nič menej, ako mi bolo pripomenuté - príliš rozsiahle takéto databázy (veľký .json súbor) prehliadač nezvládne... musí to mať na starosti back-end potom...
+// todo:
+// ! funkcia setTimeout je tu len na efekt, akože sa čaká na načítanie databázy... neskôr ako narastie tak to bude automatické takto a potom presuniem tie dve inštrukcie na prekreslenie obsahu  až do async funkcie, za fetch a tesne pred to ako sa začnú zobrazovať detaily na stránke
+setTimeout(() => {
+  getData("ev_db.json");
+  loading_spinner.style.display = "none";
+  waiting_for_load.style.display = "block";
+}, 2000);
 
 async function getData(file) {
   let myObject = await fetch(file);
@@ -76,62 +89,58 @@ async function getData(file) {
   vehicle_count.innerText = database.length;
 
   // nasledujúce riadky usporiadajú EV podľa abecedy => podľa značky/výrobcu...
-  function compare(a, b) {
-    if (a.brand > b.brand) return 1;
-    if (a.brand < b.brand) return -1;
+  function compare(a, brands) {
+    if (a.brand > brands.brand) return 1;
+    if (a.brand < brands.brand) return -1;
     return 0;
   }
   database.sort(compare);
 
   // databáza je načítaná, volaj ďalšie funkcie
 
+  // todo:
+  // ! zmaž spinner a zobraz dáta - nateraz zakomentované, až neskôr sa to aktivuje ako sa zväčší databáza...
+  /* 
+    loading_spinner.style.display = "none";
+  waiting_for_load.style.display = "block";
+   */
+
   // zavolá funkciu čo prebehne všetky značky a nastaví správne "filter značiek"
   createVehiclesBrandSelect();
   // aktivuje sa funkcia na výber značiek
   selectBrand();
-  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie, ešte pred tým si ich raz načítam, aby sa to vykonalo iba raz...
-  input_filter = document.querySelectorAll(`.check_box input[type="checkbox"]`);
+  // aktivuj funkciu na výber filtrov pre obsah na zobrazenie - pracujem tu s input_filters
   controlFilterCheckbox();
   // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel z databázy
   // neskôr budem pracovať s inými - filtrovanými poliami
-  selected_brand = database; // výber podľa značky - pri štarte všetky objekty
-  selected_filter = database; // výber podľa filtrov - pri štarte všetky objekty
+  selected_brands = database; // výber podľa značky - pri štarte všetky objekty
+  selected_filters = database; // výber podľa filtrov - pri štarte všetky objekty
   // zavolaj funkciu čo vykreslí zoznam na obrazovku
   // createVehicleArticles() - netreba to volať samostatne, volá si to potom nastavenie paginácie samo. tú funkciu volám aj vždy po tom ako sa zmenia niektoré filtre...
-  // todo ako sa predĺži načítavanie databazy v budúcnosti tak tu bude ten čas automaticky pár sekúnd, teraz pre efekt 2 sekundy...
-  setTimeout(() => {
-    loading_spinner.style.display = "none";
-    // a až teraz, keď nabehol korektne celý obsah, aktivuj aj funkciu na nastavovanie počtu vozidiel na stránku, lebo v nej sa volá taktiež funkcia createVehicleArticles a teda databáza musí byť načítaná...
-    pgnSetting();
-    // nasledujúce riadky kódu nulujú filtre pri každom reloade stránky... ak to nebolo, tak zostávali "checkbox" občas atívne označené ale v podstate nespracované...
-    // po reloade aj tak žiadny filter nechcem...
-    const input_filter = document.querySelectorAll(
-      `.check_box input[type="checkbox"]`
-    );
-    input_filter.forEach((input) => (input.checked = false));
-    input_filter[0].checked = true;
-    input_filter[0].parentElement.style.fontWeight = "bold";
-    displayFiltersStatus();
-    const input_brand = document.querySelectorAll(
-      `.check_box_mark input[type="checkbox"]`
-    );
-    input_brand.forEach((input) => (input.checked = false));
-    input_brand[0].checked = true;
-    input_brand[0].parentElement.style.fontWeight = "bold";
-    displayBrandsStatus();
-    // pre všetky input elementy nastavím automaticky "bold" písmo ak sú "checked", pomocou CCS to nejde, sú to predchádzajúce elementy...
-    const inputs = document.querySelectorAll("input");
-    inputs.forEach((imp) => {
-      // samozrejme po každej zmene stavu to treba prepisovať... takže tu dám na to potrebný eventListener
-      imp.addEventListener("change", () => {
-        inputs.forEach((element) => {
-          element.checked
-            ? (element.parentElement.style.fontWeight = "bold")
-            : (element.parentElement.style.fontWeight = "normal");
-        });
+  // nasledujúce riadky kódu nulujú filtre pri každom reloade stránky... ak to nebolo, tak zostávali "checkbox" občas atívne označené ale v podstate nespracované...
+  // po reloade aj tak žiadny filter nechcem... Načítané už sú...
+  input_filters.forEach((input) => (input.checked = false));
+  input_filters[0].checked = true;
+  input_filters[0].parentElement.style.fontWeight = "bold";
+  displayFiltersStatus();
+  input_brands.forEach((input) => (input.checked = false));
+  input_brands[0].checked = true;
+  input_brands[0].parentElement.style.fontWeight = "bold";
+  displayBrandsStatus();
+  // pre všetky input elementy nastavím automaticky "bold" písmo ak sú "checked", pomocou CCS to nejde, sú to predchádzajúce elementy...
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((imp) => {
+    // samozrejme po každej zmene stavu to treba prepisovať... takže tu dám na to potrebný eventListener
+    imp.addEventListener("change", () => {
+      inputs.forEach((element) => {
+        element.checked
+          ? (element.parentElement.style.fontWeight = "bold")
+          : (element.parentElement.style.fontWeight = "normal");
       });
     });
-  }, 2000);
+  });
+  // a až teraz, keď nabehol korektne celý obsah, aktivuj aj funkciu na nastavovanie počtu vozidiel na stránku, lebo v nej sa volá taktiež funkcia createVehicleArticles a teda databáza musí byť načítaná...
+  pgnSetting();
 }
 
 /* spracovanie tlačidiel pre nastavenie paginácie */
@@ -148,7 +157,6 @@ function pgnSetting() {
 
 /* spracuje všetky značky a zaradí ich do selectoru značiek */
 function createVehiclesBrandSelect() {
-  //const v_selector = document.getElementById("vehicle_mark");
   const brand_select = document.getElementById("brand_select");
   /* vytvorím pole výrobcov / značiek áut ktoré sa nachádzajú v databázy*/
   v_brand = [];
@@ -157,12 +165,12 @@ function createVehiclesBrandSelect() {
   v_brand_unique = [...new Set(v_brand)];
   /* a uprac ich podľa abecedy... */
   v_brand_unique.sort();
-  // najskôr vytvoríme prvý výber - vypnutie filtra značiek...
+  // najskôr vytvorím prvý výber - vypnutie filtra značiek...
   brand_select.innerHTML += `<label class="check_box_mark">Vypnutý filter značiek<input type="checkbox" id="no_mark"><span class="checkmark"></span></label><br>`;
   /* a filtrovaný zoznam potom prihoď do základu selektora... */
   v_brand_unique.forEach((brand) => {
-    //ešte pre každú značku zistím počet...
-    count = 0
+    // ešte pre každú značku zistím počet...
+    count = 0;
     for (const vehicle of database) {
       if (vehicle.brand == brand) {
         count++;
@@ -171,7 +179,7 @@ function createVehiclesBrandSelect() {
     brand_select.innerHTML += `<label class="check_box_mark">${brand}&nbsp;(${count})<input type="checkbox" id="${brand}"><span class="checkmark"></span></label>`;
   });
   // a hneď to načítaj, neskôr s nimi pracujem...
-  input_brand = document.querySelectorAll(
+  input_brands = document.querySelectorAll(
     `.check_box_mark input[type="checkbox"]`
   );
 }
@@ -184,8 +192,8 @@ function createVehicleArticles() {
   selected_items = []; // nuluj výber vozidiel
   // do výberu na zobrazenie sa dostanú iba modely ktoré prešli oboma filtrami...
   // táto funkcia urobí prienik
-  selected_items = selected_brand.filter((element) =>
-    selected_filter.includes(element)
+  selected_items = selected_brands.filter((element) =>
+    selected_filters.includes(element)
   );
 
   // kontrola dĺžky celého zoznamu artiklov
@@ -313,7 +321,7 @@ function displayPaginationStatus(sites, active_site) {
   });
 }
 
-// kontrola klikania už je nastavená...
+// kontrola klikania už je nastavená... tu sa spracováva to samotné kliknutie
 function paginationClick() {
   let sites = s_itm_sites;
   // kontrola "+" - pozor na koniec stránkovania
@@ -341,7 +349,7 @@ function paginationClick() {
   // treba tam časovač, dajako sa to sekalo bez neho, asi nie je korektne dačo načítané tak okamžite... stáva sa to...
   setTimeout(() => {
     window.scrollTo({
-      top: document.getElementById(filter_info.id).offsetTop + 10,
+      top: document.getElementById(filter_info.id).offsetTop + 16,
       left: 0,
       behavior: "smooth",
     });
@@ -354,7 +362,11 @@ function displayVehicles(page_number) {
   // kontrola prázdneho zoznamu a oznámenie o tom na obrazovke
   if (selected_items.length == 0) {
     section_result.classList.add("grid_off");
-    section_result.innerHTML = `<span style="font-weight: 700;">Pre túto kombináciu filtrov nevyhovuje žiadne vozidlo...</span>`;
+    section_result.innerHTML = `
+    <span style="font-weight: 700;">Pre túto kombináciu filtrov nevyhovuje žiadne vozidlo...</span>
+    <p style = "margin: 0 auto";><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" fill="var(--color_primary)" xml:space="preserve">
+<g><path d="M500,10C229.4,10,10,229.4,10,500s219.4,490,490,490s490-219.4,490-490S770.6,10,500,10L500,10z M69.4,500C69.4,262.2,262.2,69.4,500,69.4c103.1,0,197.9,36.3,272,96.8c11.3,9.2,22,18.9,32.3,29.1L181.5,789.8c-1.1-1.2-2.2-2.4-3.2-3.6C110.5,710.2,69.4,609.9,69.4,500L69.4,500z M500,930.6c-103.7,0-198.8-36.6-273.1-97.7l618.4-590.3c53.6,71.8,85.3,160.9,85.3,257.4C930.6,737.8,737.8,930.6,500,930.6L500,930.6z"/></g>
+</svg></p>`;
     // a návrat, netreba ďalej nič zobrazovať...
     return;
   }
@@ -363,8 +375,8 @@ function displayVehicles(page_number) {
 
   // štart a koniec indexov pre zoznam ráta aj s aktuálnou stránkou!
   // na ďalších stranách sú prvky s násobkami indexov
-  i_start = page_number * pagination_number; //0,1,2...
-  i_end = i_start + pagination_number; //0 + 12...
+  i_start = page_number * pagination_number; //0,12,24...
+  i_end = i_start + pagination_number; //0 + 12, 12 + 12...
   // ešte musím skontrolovať či aktuálny počet prvkov na zobrazenie nie je menší ako maximálne povolený počet prvkov na stránku... a upraviť teda počet
   i_end > selected_items.length ? (i_end = selected_items.length) : undefined;
   // a už len zobraziť potrebný počet artiklov na stránku
@@ -390,8 +402,8 @@ function displayVehicles(page_number) {
   // a spolu s nimi aj obrázky, je to také intuitívne môcť kliknúť aj na obrázok
   buttons = document.querySelectorAll(".details_button, .item img");
   buttons.forEach((btn) => {
+    /* kliknutie zavolá funkciu na vytvorenie obsahu modal okna, s indexom vozidla */
     btn.onclick = function () {
-      /* zavolá funkciu na vytvorenie obsahu modal okna, s indexom vozidla */
       make_modal(Number(this.dataset.model_id));
 
       //! 2 riadky blokácie posunu
@@ -424,6 +436,7 @@ function make_modal(item_id) {
   /*
    * samozrejme do vlastnej databáze som si mohol písať údaje ako mi vyhovuje, ako chcem, ale ide o to vedieť robiť s tým čo prichádza, no a to nebude asi nikdy podľa mojich predstáv... preto to aj tu spracovávam takto prácne */
   // do premennej item dám konkrétny objekt s ktorým tu pracujem, mám tak menej zápisu v nasledujúcom kóde pri spracovávaní vlastností objektu...
+  console.log(item_id);
   let item = selected_items[item_id];
   if (!item.production) {
     production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>`;
@@ -556,7 +569,7 @@ function make_modal(item_id) {
   more_info = "";
   /* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť, výhoda, ak nie je žiadny znak, text bude normálne základný */
   if (item.plus_info.length !== 0) {
-    more_info += `<p><b>Ďalšie zaujímavé informácie:</b></p>`;
+    more_info += `<p><brands>Ďalšie zaujímavé informácie:</brands></p>`;
     for (let index = 0; index < item.plus_info.length; index++) {
       info_text = item.plus_info[index];
       c = "var(--color_txt)";
@@ -578,7 +591,7 @@ function make_modal(item_id) {
 
   reviews = "";
   if (item.reviews.length !== 0) {
-    reviews += `<p><b>Odkazy na recenzie, články:</b></p>`;
+    reviews += `<p><brands>Odkazy na recenzie, články:</brands></p>`;
     for (let index = 0; index < item.reviews.length; index++) {
       reviews += `<a href="${item.reviews[index].link}" target="_blank" rel="noopener noreferrer">${item.reviews[index].text}</a><br>`;
     }
@@ -592,25 +605,25 @@ function make_modal(item_id) {
                         <p>${item.description}</p>
                         ${production}
         <div class="line" style="border-top:1px solid gray;"></div>
-        <p><b>Nabíjanie:</b></p>
-        <p><b>AC:</b> ${ac_charging}</p>
-        <p><b>DC:</b> ${dc_charging}</p>
-        <p><b>Kapacita batérie:</b></p>
+        <p><brands>Nabíjanie:</brands></p>
+        <p><brands>AC:</brands> ${ac_charging}</p>
+        <p><brands>DC:</brands> ${dc_charging}</p>
+        <p><brands>Kapacita batérie:</brands></p>
         <p>- nominálna: ${bc_nominal}<br>
             - využiteľná: ${bc_use}</p>
-        <p><b>Dojazd:</b></p>
+        <p><brands>Dojazd:</brands></p>
         <p> WLTP: ${wltp_range} km<br>
             (Reálny dojazd v praxi, pre všetky verzie a podmienky dohromady, sa pohybuje od ${min_max_range}km!)</p>
-        <p><b>Priemerná spotreba:</b> ${item.efficiency}kWh/100km</p>
-        <p><b>Počet miest:</b> ${seats}</p>
-        <p><b>Výkon motora:</b> ${engine_power}kW</p>
-        <p><b>Pohon všetkých kolies:</b> ${awd}</p>
-        <p><b>Zrýchlenie 0-100 km/h:</b> ${akceleration} s</p>
-        <p><b>Hmotnosť (prázdneho) vozidla:</b> ${item.weight} kg</p>
-        <p><b>Aktívny termomanažment batérie:</b> ${cooling}</p>
-        <p><b>Tepelné čerpadlo:</b> ${heat_pump}</p>
-        <p><b>Strešný nosič:</b> ${roof_rack}</p>
-        <p><b>Ťažné zariadenie:</b> ${t_d}</p>
+        <p><brands>Priemerná spotreba:</brands> ${item.efficiency}kWh/100km</p>
+        <p><brands>Počet miest:</brands> ${seats}</p>
+        <p><brands>Výkon motora:</brands> ${engine_power}kW</p>
+        <p><brands>Pohon všetkých kolies:</brands> ${awd}</p>
+        <p><brands>Zrýchlenie 0-100 km/h:</brands> ${akceleration} s</p>
+        <p><brands>Hmotnosť (prázdneho) vozidla:</brands> ${item.weight} kg</p>
+        <p><brands>Aktívny termomanažment batérie:</brands> ${cooling}</p>
+        <p><brands>Tepelné čerpadlo:</brands> ${heat_pump}</p>
+        <p><brands>Strešný nosič:</brands> ${roof_rack}</p>
+        <p><brands>Ťažné zariadenie:</brands> ${t_d}</p>
         ${more_info}
         ${reviews}
         <div class="arrows"><span onclick="modal_content.scrollTo({
@@ -658,18 +671,18 @@ window.onclick = function (e) {
   }
 };
 
-/*** načítaj a spracuj selector značiek ***/
+/*** načítaj a spracuj checkbox značiek ***/
 function selectBrand() {
-  // pracujem tu s "input_brand" - tu sa načítali všetky inputy pre značky, pri ich spracovaní z databázy
+  // pracujem tu s "input_brands" - tu sa načítali všetky inputy pre značky, pri ich spracovaní z databázy
 
-  for (let b of input_brand) {
-    b.addEventListener("click", function () {
-      selected_brand =
+  for (let brands of input_brands) {
+    brands.addEventListener("click", function () {
+      selected_brands =
         []; /* vynuluj, naložím tam iba modely áut aktuálne vybranej značky */
       // vybral som voľbu bez filtrov!
-      if (b.id == "no_mark") {
+      if (brands.id == "no_mark") {
         // všetky ostatné možnosti deaktivuj
-        input_brand.forEach((input) => (input.checked = false));
+        input_brands.forEach((input) => (input.checked = false));
         // a len táto je teda aktívna, je jedno či sme ju aktivovoali, alebo deaktivovali, ona ako hlavná deaktivovať nejde... ona v podstate preráža všetky ostatné...
         // takže ju pre istotu označím ako "checked"
         this.checked = true;
@@ -678,7 +691,7 @@ function selectBrand() {
         return;
       }
       // inak - prvú deaktivuj, bude aktívna dajaká iná, preveríme...
-      input_brand[0].checked = false;
+      input_brands[0].checked = false;
       if (this.checked) {
         //ak je tá stlačená teraz aktívna, tak OK, spracujem - zmena zobrazenia
         displayBrandsStatus();
@@ -686,7 +699,7 @@ function selectBrand() {
       }
       // ak ale sa deaktivovala, tak kontrola či je vôbec teraz dajaká aktívna...
       // kontrola či náhodou nemám "nič vybrané", potom aktivujem prvú voľbu, bez filtra...
-      for (let input of input_brand) {
+      for (let input of input_brands) {
         if (input.checked == true) {
           // ak čo i len jedna voľba bude aktívna, tak koniec cyklu a môžem zobrazovať
           displayBrandsStatus();
@@ -694,26 +707,29 @@ function selectBrand() {
         }
       }
       // nič nebolo aktívne - zostala teda len jediná možnosť - aktivovať "žiadny filter"
-      input_brand[0].checked = true;
+      input_brands[0].checked = true;
       displayBrandsStatus();
     });
   }
 }
 
+/* zapíš stav filtra pre značky */
 function displayBrandsStatus() {
-  if (input_brand[0].checked) {
+  // žiadny filter
+  if (input_brands[0].checked) {
     // zobraz všetky značky
-    selected_brand = database;
+    selected_brands = database;
     filtered_brands.style.color = "var(--color_txt)";
     brand = "zobrazujem všetky značky  ";
   } else {
+    // filter aktívny, vypíš značky, zisti nový zoznam áut ktoré zodpovedajú filtru podľa značky
     brand = "";
     filtered_brands.style.color = "red";
-    input_brand.forEach((element) => {
+    input_brands.forEach((element) => {
       if (element.checked) {
         for (const vehicle of database) {
           if (vehicle.brand == element.id) {
-            selected_brand.push(vehicle);
+            selected_brands.push(vehicle);
           }
         }
         brand += element.id + "; ";
@@ -727,16 +743,16 @@ function displayBrandsStatus() {
 
 /*** načítaj a spracuj checkbox filtrovania */
 function controlFilterCheckbox() {
-  // pracujem tu s "input_filter" - v ňom sú načítané všetky výbery pre filtre
+  // pracujem tu s "input_filters" - v ňom sú načítané všetky výbery pre filtre
 
-  for (let i of input_filter) {
+  for (let i of input_filters) {
     i.addEventListener("click", function () {
       // nulovanie poľa objektov, spravím nové...
-      selected_filter = [];
+      selected_filters = [];
       // vybral som voľbu bez filtrov!
       if (this.id == "filter_off") {
         // všetky ostatné možnosti deaktivuj
-        input_filter.forEach((input) => (input.checked = false));
+        input_filters.forEach((input) => (input.checked = false));
         // a len táto je teda aktívna, je jedno či sme ju aktivovoali, alebo deaktivovali, ona ako hlavná deaktivovať nejde... ona v podstate preráža všetky ostatné...
         // takže ju pre istotu označím ako "checked"
         this.checked = true;
@@ -745,7 +761,7 @@ function controlFilterCheckbox() {
         return;
       }
       // inak - prvú deaktivuj, bude aktívna dajaká iná, preveríme...
-      input_filter[0].checked = false;
+      input_filters[0].checked = false;
       if (this.checked) {
         //ak je tá stlačená teraz aktívna, tak OK, spracujem - zmena zobrazenia
         // POZOR na vzájomnú deaktiváciu vyrábané / nevyrábané vozidlá!
@@ -760,7 +776,7 @@ function controlFilterCheckbox() {
       }
       // ak ale sa deaktivovala, tak kontrola či je vôbec teraz dajaká aktívna...
       // kontrola či náhodou nemám "nič vybrané", potom aktivujem prvú voľbu, bez filtra...
-      for (let input of input_filter) {
+      for (let input of input_filters) {
         if (input.checked == true) {
           // ak čo i len jedna voľba bude aktívna, tak koniec cyklu a môžem zobrazovať
           displayFiltersStatus();
@@ -768,7 +784,7 @@ function controlFilterCheckbox() {
         }
       }
       // nič nebolo aktívne - zostala teda len jediná možnosť - aktivovať "žiadny filter"
-      input_filter[0].checked = true;
+      input_filters[0].checked = true;
       displayFiltersStatus();
     });
   }
@@ -778,10 +794,10 @@ function displayFiltersStatus() {
   // tu sa spracuje výsledný stav filtrov
 
   // voľba bez filtru sa vybaví hneď a jednoducho, nech sa nezdržujeme...
-  if (input_filter[0].checked) {
+  if (input_filters[0].checked) {
     filters.style.color = "var(--color_txt)";
-    filters.innerHTML = input_filter[0].previousSibling.data;
-    selected_filter = database;
+    filters.innerHTML = input_filters[0].previousSibling.data;
+    selected_filters = database;
     createVehicleArticles();
     return;
   }
@@ -793,7 +809,7 @@ function displayFiltersStatus() {
   filters.style.color = `${red}`;
   // výpis filtrov treba pripraviť
   filters_txt = ""; // najskôr z toho urobím reťazec, lebo z poslednej hodnoty odstránim potom čiarku...
-  for (let i of input_filter) {
+  for (let i of input_filters) {
     s_f_input = []; //vždy vynuluj, čo cyklus to naplnenie novými objektami, ktoré prešli konkrétnym filtrom
     if (i.checked) {
       filters_txt += i.previousSibling.data + "; ";
@@ -845,18 +861,18 @@ function displayFiltersStatus() {
       }
       // ak je výber nateraz prázdny, tak tam len pridaj všetko čo prešlo filtrom...
       // prienik by tu nefungoval, žiadny by nebol...
-      if (selected_filter.length == 0) {
-        selected_filter = s_f_input;
+      if (selected_filters.length == 0) {
+        selected_filters = s_f_input;
       } else {
         // ale ak prázdny nebol, tak tam pridaj položky, ale iba "prienik"...
-        selected_filter = s_f_input.filter((element) =>
-          selected_filter.includes(element)
+        selected_filters = s_f_input.filter((element) =>
+          selected_filters.includes(element)
         );
       }
     }
   }
   // odtsráň bodkočiarku a medzeru z posledného filtru a zobraz použité filtre
   filters.innerHTML = filters_txt.slice(0, -2);
-  // selected_filter teraz obsahuje vyfiltrované elementy... zobraz nový stav vozidiel
+  // selected_filters teraz obsahuje vyfiltrované elementy... zobraz nový stav vozidiel
   createVehicleArticles();
 }

@@ -268,6 +268,50 @@ todo len dočasne - info že stránka je vo výstavbe */
   border: 2px solid var(--color_primary) !important;
 }
 
+/*** spinner pri štarte načítavania databázy  */
+#loading_spinner_block {
+  display: inline-block;
+  height: 40vh;
+  margin: 1rem 0;
+  position: relative;
+  left: 45%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 120%;
+}
+.loading_spinner {
+  width: 30vh;
+  height: 30vh;
+  border-top: 2vh solid var(--color_primary);
+  border-right: 2vh solid rgb(230, 230, 230);
+  border-bottom: 2vh solid rgb(230, 230, 230);
+  border-left: 2vh solid rgb(230, 230, 230);
+  border-radius: 50%;
+  -webkit-animation: loading 1s infinite linear;
+  animation: loading 1s infinite linear;
+}
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 /*** aside - filtering */
 
 .filtering {
@@ -303,6 +347,8 @@ todo len dočasne - info že stránka je vo výstavbe */
   -webkit-transition: max-height 0.3s ease-in-out,
     padding 0.05s 0.25s ease-in-out;
   -o-transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
+  -webkit-transition: max-height 0.3s ease-in-out,
+    padding 0.05s 0.25s ease-in-out;
   transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
   overflow-y: hidden;
   font-weight: normal;
@@ -442,6 +488,9 @@ todo len dočasne - info že stránka je vo výstavbe */
   -webkit-transition: max-height 0.5s ease-in-out,
     padding 0.05s 0.45s ease-in-out;
   -o-transition: max-height 0.5s ease-in-out, padding 0.05s 0.45s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out,
+    padding 0.05s 0.37s ease-in-out;
+  -o-transition: max-height 0.5s ease-in-out, padding 0.05s 0.37s ease-in-out;
   transition: max-height 0.5s ease-in-out, padding 0.05s 0.37s ease-in-out;
   overflow-y: hidden;
   font-size: 1rem;
@@ -519,53 +568,10 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 /* class pe prázdny zoznam v sekcii .result - zruším tým grid, aby bol text oznamu pekne na strede... */
-/* ! toto musí byť za @media, inak mi to rušilo... */
+/* ! toto musí byť za @media, inak mi to samozrejme rušilo... platí posledná zmena */
 .grid_off {
   grid-template-columns: 1fr;
   text-align: center;
-}
-
-/*** spinner pri štarte načítavania databázy  */
-#loading_spinner_block {
-  background-color: rgba(255, 255, 255, 0.9);
-  z-index: 2000;
-  width: 100%;
-  height: 40vh;
-  position: relative;
-  top: 0;
-  left: 0;
-  font-size: 120%;
-}
-.loading_spinner {
-  width: 30vh;
-  height: 30vh;
-  border-top: 2vh solid var(--color_primary);
-  border-right: 2vh solid rgb(230, 230, 230);
-  border-bottom: 2vh solid rgb(230, 230, 230);
-  border-left: 2vh solid rgb(230, 230, 230);
-  border-radius: 50%;
-  -webkit-animation: loading 1s infinite linear;
-  animation: loading 1s infinite linear;
-}
-@-webkit-keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 /** jednotlivé položky v sekcii výsledkov (result) - generuje ich až JS */

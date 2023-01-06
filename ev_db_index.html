@@ -137,15 +137,21 @@
         </section>
 
         <div class="line"></div>
-        <aside class="filtering">
-            <h2>Hľadáš dačo konkrétne?</h2>
+        <div id="loading_spinner_block">
+            <div class="loading_spinner"></div>
+            <p>načítavam databázu...</p>
+        </div>
 
-            <svg class="svg_car" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="447.645px" height="447.645px"
-                viewBox="0 0 447.645 447.645"
-                style="fill:var(--color_primary); enable-background:new 0 0 447.645 447.645;" xml:space="preserve">
-                <g>
-                    <path d="M447.639,244.402c0-8.805-1.988-17.215-5.578-24.909c-0.37-1.956-0.793-3.909-1.322-5.89l-38.884-96.365l-0.263-0.867
+        <div id="waiting_for_load" style="display: none;">
+            <aside class="filtering">
+                <h2>Hľadáš dačo konkrétne?</h2>
+
+                <svg class="svg_car" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="447.645px" height="447.645px"
+                    viewBox="0 0 447.645 447.645"
+                    style="fill:var(--color_primary); enable-background:new 0 0 447.645 447.645;" xml:space="preserve">
+                    <g>
+                        <path d="M447.639,244.402c0-8.805-1.988-17.215-5.578-24.909c-0.37-1.956-0.793-3.909-1.322-5.89l-38.884-96.365l-0.263-0.867
         		c-13.605-40.509-32.963-78.001-82.049-78.001H131.868c-50.296,0-68.069,38.421-81.972,77.776l-40.673,96.6
         		C3.343,222.167,0,232.944,0,244.402v29.986c0,4.636,0.548,9.171,1.59,13.539C0.577,290.566,0,293.41,0,296.408v89.185
         		c0,13.078,10.602,23.682,23.68,23.682h49.14c13.071,0,23.673-10.604,23.673-23.682v-44.599h257.46v44.599
@@ -158,150 +164,154 @@
         		c5.92,0,10.71,4.792,10.71,10.713C296.994,277.595,292.204,282.389,286.284,282.389z M395.051,285.776h-51.846
         		c-9.343,0-16.91-7.578-16.91-16.912c0-9.337,7.573-16.91,16.91-16.91h51.846c9.343,0,16.916,7.573,16.916,16.91
         		C411.967,278.198,404.394,285.776,395.051,285.776z" />
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-            </svg>
-            <div class="brand_select">
-                <h3>Ktoré značky preferuješ?</h3>
-                <span class="info_btn" onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
-                                pre viac informácií)</span>
-                            <p class="filtering_info" id="filtering_info"
-                                onclick="document.getElementById('filtering_info').classList.remove('show');">
-                                (Číslo pri značke označuje celkový počet vozidiel danej značky v databáze. Ak
-                                to aktuálne filtre nedovolia, tak nemusia byť vždy všetky zobrazené!)</p>
-                <div id="brand_select"><!-- obsah generuje JS --></div>
-            </div>
-
-            <svg class="svg_filter" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                <g>
-                    <g>
-                        <path style="fill:var(--color_primary);"
-                            d="M8.959,0v81.89l201.666,201.666V512l90.75-60.5V283.556L503.041,81.89V0H8.959z M271.125,435.31l-30.25,20.167V292.416
-        			h30.25V435.31z M279.985,262.166h-47.969L60.6,90.75h390.802L279.985,262.166z M472.791,60.5H39.209V30.25h433.582V60.5z" />
                     </g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-            </svg>
-            <section class="filters">
-                <h3>Vyber filtre pre vlastnosti (aj kombinácie sú možné):</h3>
-                <p style="margin-top: 0.35rem;"><span class="info_btn"
-                        onclick="document.getElementById('filters_info').classList.toggle('show');">(Klikni
-                        pre viac informácií)</span></p>
-                <p class="filtering_info" id="filters_info"
-                    onclick="document.getElementById('filters_info').classList.remove('show');">(Filter zobrazí aj
-                    vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
-                    napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda možná,
-                    ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť presnejšie
-                    ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely, kde je
-                    istota že daná vlastnosť naozaj nie je. <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
-                        nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky!</b>)</p>
-                <label class="check_box">žiadny filter, zobrazujem všetko<input type="checkbox" id="filter_off">
-                    <span class="checkmark"></span></label>
-                <br>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                </svg>
+                <div class="brand_select">
+                    <h3>Ktoré značky preferuješ?</h3>
+                    <span class="info_btn"
+                        onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
+                        pre viac informácií)</span>
+                    <p class="filtering_info" id="filtering_info"
+                        onclick="document.getElementById('filtering_info').classList.remove('show');">
+                        (Číslo pri značke označuje celkový počet vozidiel danej značky v databáze. Ak
+                        to aktuálne filtre nedovolia, tak nemusia byť vždy všetky zobrazené!)</p>
+                    <div id="brand_select"><!-- obsah generuje JS --></div>
+                </div>
 
-                <label class="check_box">AC nabíjanie 11 a viac kW<input type="checkbox" id="ac_charging">
-                    <span class="checkmark"></span>
-                </label>
-                <br>
+                <svg class="svg_filter" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                    style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path style="fill:var(--color_primary);"
+                                d="M8.959,0v81.89l201.666,201.666V512l90.75-60.5V283.556L503.041,81.89V0H8.959z M271.125,435.31l-30.25,20.167V292.416
+        			h30.25V435.31z M279.985,262.166h-47.969L60.6,90.75h390.802L279.985,262.166z M472.791,60.5H39.209V30.25h433.582V60.5z" />
+                        </g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                </svg>
+                <section class="filters">
+                    <h3>Vyber filtre pre vlastnosti (aj kombinácie sú možné):</h3>
+                    <p style="margin-top: 0.35rem;"><span class="info_btn"
+                            onclick="document.getElementById('filters_info').classList.toggle('show');">(Klikni
+                            pre viac informácií)</span></p>
+                    <p class="filtering_info" id="filters_info"
+                        onclick="document.getElementById('filters_info').classList.remove('show');">(Filter zobrazí aj
+                        vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
+                        napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda
+                        možná,
+                        ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť
+                        presnejšie
+                        ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely,
+                        kde je
+                        istota že daná vlastnosť naozaj nie je. <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
+                            nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky!</b>)</p>
+                    <label class="check_box">žiadny filter, zobrazujem všetko<input type="checkbox" id="filter_off">
+                        <span class="checkmark"></span></label>
+                    <br>
+
+                    <label class="check_box">AC nabíjanie 11 a viac kW<input type="checkbox" id="ac_charging">
+                        <span class="checkmark"></span>
+                    </label>
+                    <br>
 
 
-                <label class="check_box">vozidlo môže mať ťažné zariadenie<input type="checkbox"
-                        id="towing_device"><span class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">vozidlo môže mať ťažné zariadenie<input type="checkbox"
+                            id="towing_device"><span class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">vozidlo umožňuje použiť strešný nosič<input type="checkbox"
-                        id="roof_rack"><span class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">vozidlo umožňuje použiť strešný nosič<input type="checkbox"
+                            id="roof_rack"><span class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">5 a viac miestne vozidlá<input type="checkbox" id="5S_vehicle"><span
-                        class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">5 a viac miestne vozidlá<input type="checkbox" id="5S_vehicle"><span
+                            class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">možnosť pohonu všetkých kolies<input type="checkbox" id="AWD"><span
-                        class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">možnosť pohonu všetkých kolies<input type="checkbox" id="AWD"><span
+                            class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">aktívne chladenie batérií<input type="checkbox" id="active_cooling"><span
-                        class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">aktívne chladenie batérií<input type="checkbox" id="active_cooling"><span
+                            class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">iba aktuálne vyrábané modely<input type="checkbox" id="production_true"><span
-                        class="checkmark"></span>
-                </label>
-                <br>
+                    <label class="check_box">iba aktuálne vyrábané modely<input type="checkbox"
+                            id="production_true"><span class="checkmark"></span>
+                    </label>
+                    <br>
 
-                <label class="check_box">iba už nevyrábané modely<input type="checkbox" id="production_false"><span
-                        class="checkmark"></span>
-                </label>
-            </section>
+                    <label class="check_box">iba už nevyrábané modely<input type="checkbox" id="production_false"><span
+                            class="checkmark"></span>
+                    </label>
+                </section>
 
-            <!-- mám aj svg element pre sortovanie, ale nateraz nepoužité... -->
-            <!--<svg class = "svg_search" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                <!-- mám aj svg element pre sortovanie, ale nateraz nepoužité... -->
+                <!--<svg class = "svg_search" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                 y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
                 <g>
                     <polygon style="fill:var(--color_primary);" points="85.877,154.014 85.877,428.309 131.706,428.309 131.706,154.014 180.497,221.213 217.584,194.27 108.792,44.46 
@@ -341,28 +351,26 @@
                 </g>
             </svg>-->
 
-        </aside>
-        <div class="line"></div>
-        <section class="filter_info" id="filter_info">
-            <h2>Zobrazené vozidlá z katalógu:</h2>
-            <p>Značky: <span id="filtered_brands">zobrazujem všetky značky</span></p>
-            <p>Aktívne filtre: <span id="filters">žiadny filter, zobrazujem všetko</span></p>
-            <p>Počet vozidiel na zobrazenie: <span id="vehicle_to_display"></span></p>
-        </section>
+            </aside>
+            <div class="line"></div>
+            <section class="filter_info" id="filter_info">
+                <h2>Zobrazené vozidlá z katalógu:</h2>
+                <p>Značky: <span id="filtered_brands">zobrazujem všetky značky</span></p>
+                <p>Aktívne filtre: <span id="filters">žiadny filter, zobrazujem všetko</span></p>
+                <p>Počet vozidiel na zobrazenie: <span id="vehicle_to_display"></span></p>
+            </section>
 
 
-        <section class="result">
-            <div id="loading_spinner_block">
-                <div class="loading_spinner"></div>
-                <p>načítavam databázu...</p>
-            </div>
-        </section>
+            <section class="result">
+                <!-- obsah generuje JS -->
+            </section>
 
-        <section class="pagination">
-            <ul id="pagination">
-                <!-- obsah zabezpečuje JS! -->
-            </ul>
-        </section>
+            <section class="pagination">
+                <ul id="pagination">
+                    <!-- obsah generuje JS! -->
+                </ul>
+            </section>
+        </div>
 
         <footer>&copy; 2022 Daniel Gago</footer>
     </div>
