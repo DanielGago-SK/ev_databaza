@@ -9,10 +9,11 @@ Len tak na skúšku vytvorený projekt, na precvičenie si (hlavne) JS.
 - práca s .json formátom (vlastná vytvorená databáza je jeden .json súbor)
 - "fetch" - načítanie a spracovanie externého .json súboru
 - polia objektov a ich spracovávanie pomocou for cyklov, alebo funkcií  
-- filtre a sortovanie polí objekotv (značky, vlastnosti)
+- filtre a sortovanie polí objektov (značky, vlastnosti)
 - paginácia - práca s viacerými stránkami výsledného zoznamu
 - input elementy (nakoniec som použil type "checkbox", ale boli aj testy s typom "select")
-- viaceré CSS možnosti (aj keď dizajn je tu na druhej koľaji a isto by potreboval doladiť) - "modal window", "grid", "@keyframes" a "transition"pre animácie, atď... 
+- viaceré CSS možnosti (aj keď dizajn a UX je tu na druhej koľaji a isto by potreboval doladiť...) 
+- "modal window", "grid", "@keyframes" a "transition"pre animácie, atď... 
 
  <br> 
 
