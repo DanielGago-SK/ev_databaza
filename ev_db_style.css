@@ -498,7 +498,7 @@ todo len dočasne - info že stránka je vo výstavbe */
 }
 
 .filtering_info b {
-  color: white;
+  color: rgb(0, 0, 127);
 }
 
 .filters span {
