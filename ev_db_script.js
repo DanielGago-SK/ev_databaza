@@ -16,7 +16,8 @@ pagination_number = 12; // koľko kusov elementov chcem maximálne na stánku na
 /* 12 je ideál - deliteľné 2, 3, 4, 6 - mriežka je tak skoro vždy plná */
 
 // tento sled príkazov by si mal otestovať na akom zariadení sa pracuje. S mobilom / PC to funguje, zobrazuje mi korektné počty na stránku. S tabletom som to netestoval, pre Android tablet to nedetekovalo ako tablet.
-if (/ipad|tablet/i.test(navigator.userAgent)) {
+// ! prerobil som to radšej na štýľ že si zistím šírku obrazovky (len pri štarte) a podľa toho nastavím "rozumné množstvá" na obrazovku...
+/*if (/ipad|tablet/i.test(navigator.userAgent)) {
   // nastaví nový počet modelov na stránku
   pagination_number = 9;
   //console.log("it's a Ipad");
@@ -27,6 +28,26 @@ if (/ipad|tablet/i.test(navigator.userAgent)) {
 } /*else {
   //console.log("it's a Desktop";//zostáva teda plný počet 12...
 //*/
+
+// aká je šírka obrazovky / displaya?
+// nastavím podľa toho koľko kusov sa na obrazovku zobrazí pri štarte - vždy pekne 3 plné riadky...
+// samozrejme sa to dá vždy potom klikom zmeniť podľa požiadaviek zákazníka...
+let curent_width =
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+if (curent_width <= 600) {
+  pagination_number = 3;
+} // mobil...
+else if (curent_width <= 900) {
+  pagination_number = 6;
+} // tablety - po 2 kusy na riadok
+else if (curent_width <= 1199) {
+  pagination_number = 9;
+} // PC - po 3 kusy na riadok...
+else {
+  pagination_number = 12;
+} // PC - po 4 kusy na riadok
 // a ešte označ ako vybraný potrebný blok pre výber počtu položiek na stránku
 document
   .querySelector(`[data-pgn = "${pagination_number}"]`)
@@ -59,8 +80,9 @@ let i = 0;
 setTimeout(typeWriter, 500);
 // funkcia s postupným časovaním mení farby jednotlivých písmen - sama sa opätovne volá kým nie je napísaný komplet text
 function typeWriter() {
-  if (i < spans.length) {
+  if (i < spans.length / 2) {
     spans[i].style.color = "black";
+    spans[spans.length - i - 1].style.color = "black";
     i++;
     setTimeout(typeWriter, 30);
   }
