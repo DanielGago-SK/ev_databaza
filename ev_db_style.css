@@ -274,7 +274,7 @@ todo len dočasne - info že stránka je vo výstavbe */
   height: 40vh;
   margin: 1rem 0;
   position: relative;
-  left: 45%;
+  left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
