@@ -1,6 +1,6 @@
 [
   {
-    "version": "17.12.2022",
+    "version": "9.1.2023",
     "note": "tieto prvé dva riadky tu musia byť vždy ako prvé - je tu aktuálna verzia databázy - posledná zmena!!!"
   },
   {
@@ -122,9 +122,10 @@
     "t_d_restriction": "",
     "plus_info_description": "/* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť / výhoda. Ak nie je žiadny znak, text bude normálne základný */",
     "plus_info": [
-      "+vozidlo počas svojej výroby postupne dostalo 3 rôzne veľkosti batérie (vždy + kapacita) a aj iné detaily. Tieto novšie a výkonnejšie batérie idú použiť aj do starších modelov a tak si majitelia starších kusov občas urobia upgrade...",
-      "na začiatkoch bola aj verzia REX - s pomocným spaľovacím motorom, ktorý ale bol iba generátor elektrickej energie",
+      "+vozidlo počas svojej výroby postupne dostalo 3 rôzne veľkosti batérie (vždy + kapacita) a aj iné detaily. Tieto novšie a výkonnejšie batérie idú použiť aj do starších modelov a tak si majitelia starších kusov občas urobia \"upgrade\"...",
+      "na začiatkoch bola aj verzia REX - s pomocným spaľovacím motorom, ktorý ale bol iba generátor elektrickej energie a v podstate predlžovač dojazdu. Nádrž bola na 9l paliva.",
       "*DC nabíjanie je iba 47 - 49kW, ale vďaka termomenežmentu batérie je relatívne stabilne \"rýchle\"",
+      "vyrábala sa aj verzia \"S\" - športovejšie prevedenie (je to poznať aj na vonkajších dizajnových detailoch)",
       "+karoséria je z uhlíkovývh vlákien a aj v interéri sú použité netradičné materiály a na tú dobu aj riešenia (napr. ovládač smeru jazdy) ktoré sa u EV používajú doteraz",
       "zadné dvere sa otvárajú proti smeru jazdy"
     ],
@@ -132,6 +133,10 @@
       {
         "text": "odkaz na ev-database - posledná verzia so 120Ah batériou",
         "link": "https://ev-database.org/car/1149/BMW-i3s-120-Ah"
+      },
+      {
+        "text": "videorecenzia - elektromobil.tv",
+        "link": "https://www.youtube.com/watch?v=yOpQMCHlJ4s"
       }
     ]
   },
@@ -251,12 +256,16 @@
     "plus_info": [
       "+vďaka mierne menšej batérii ako má konkurencia je tu priaznivejšia cena za automobil tejto veľkosti (aj nižšia hmotnosť)",
       "vcelku zaujímavá kombinácia menšej batérie a slušného nabíjacieho výkonu, takže s pár nabíjaniami sa dajú prejsť denne už aj zaujímavé kilometre",
-      "vozidlo používa rovnakú EV techniku ako modely od Peugeot a Citroen s rovnakým výkonom motora a kapacitou batérie"
+      "vozidlo používa rovnakú EV techniku ako koncern Stelantis (Peugeot, Citroen) ak sa jedná o modely s rovnakým výkonom motora a kapacitou batérie"
     ],
     "reviews": [
       {
         "text": "odkaz na ev-database",
         "link": "https://ev-database.org/car/1192/Opel-Corsa-e"
+      },
+      {
+        "text": "odkaz na oficiálnu SK stránku",
+        "link": "https://www.opel.sk/vozidla/corsa-models/corsa-e/prehlad.html"
       }
     ]
   },
@@ -308,8 +317,8 @@
       "*výkon len 33kW je na cestách mimo mesta dosť cítiť",
       "*DC nabíjanie je možné iba pri vyššej výbave!",
       "+aj zadné okná sa dajú dobre otvárať (iba mechanicky), to u malého auta poteší",
-      "+vozidlo má dokonca plnohodnotnú rezervu!",
-      "nájsť dobrú recenziu je umenie... Všetky sú skreslené, aby to nevyznelo príliž prísne..."
+      "+vozidlo môže mať dokonca plnohodnotnú rezervu!",
+      "nájsť dobrú recenziu je umenie... Všetky sú skreslené, aby to nevyznelo príliš prísne..."
     ],
     "reviews": [
       {
