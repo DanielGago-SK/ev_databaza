@@ -458,7 +458,6 @@ function make_modal(item_id) {
   /*
    * samozrejme do vlastnej databáze som si mohol písať údaje ako mi vyhovuje, ako chcem, ale ide o to vedieť robiť s tým čo prichádza, no a to nebude asi nikdy podľa mojich predstáv... preto to aj tu spracovávam takto prácne */
   // do premennej item dám konkrétny objekt s ktorým tu pracujem, mám tak menej zápisu v nasledujúcom kóde pri spracovávaní vlastností objektu...
-  console.log(item_id);
   let item = selected_items[item_id];
   if (!item.production) {
     production = `<p class="production_info" style="color:${red};">Vozidlo sa už nevyrába!</p>`;
