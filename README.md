@@ -13,11 +13,11 @@ Len tak na skúšku vytvorený projekt, na precvičenie si (hlavne) JS.
 - paginácia - práca s viacerými stránkami výsledného zoznamu
 - input elementy (nakoniec som použil type "checkbox", ale boli aj testy s typom "select")
 - viaceré CSS možnosti (aj keď dizajn a UX je tu na druhej koľaji a isto by potreboval doladiť...) 
-- "modal window", "grid", "@keyframes" a "transition"pre animácie, atď... 
+- "modal window", "grid", "@keyframes" a "transition"pre animácie, SVG ikony, atď... 
 
  <br> 
 
-Na samotnej databázi sa bude pracovať ešte časom, teraz sú tam prevažne testovacie údaje!
+Na samotnej databázy sa bude pracovať (možno) ešte časom, teraz sú tam prevažne testovacie údaje!
 
  <br>
 
