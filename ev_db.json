@@ -1,6 +1,6 @@
 [
   {
-    "version": "9.1.2023",
+    "version": "14.1.2023",
     "note": "tieto prvé dva riadky tu musia byť vždy ako prvé - je tu aktuálna verzia databázy - posledná zmena!!!"
   },
   {
@@ -315,7 +315,7 @@
     "plus_info": [
       "za málo peňazí, málo muziky, respektíve veľa kompromisov na každom kroku. Ich zoznam by bol na pár bodov...",
       "*výkon len 33kW je na cestách mimo mesta dosť cítiť",
-      "*DC nabíjanie je možné iba pri vyššej výbave!",
+      "*DC nabíjanie je možné iba pri vyššej výbave a ešte je aj za príplatok!",
       "+aj zadné okná sa dajú dobre otvárať (iba mechanicky), to u malého auta poteší",
       "+vozidlo môže mať dokonca plnohodnotnú rezervu!",
       "nájsť dobrú recenziu je umenie... Všetky sú skreslené, aby to nevyznelo príliš prísne..."
@@ -432,7 +432,8 @@
     "towing_device": false,
     "t_d_restriction": "",
     "plus_info": [
-      "!iba pomalé AC nabíjanie!"
+      "!iba pomalé AC nabíjanie!",
+      "!oficiálne servisy nemajú dokumentáciu na servisovanie týchto vozidiel keďže nebolo určené na EU trh!"
     ],
     "reviews": []
   },
@@ -578,7 +579,8 @@
     "t_d_restriction": "",
     "plus_info": [
       "!najvýkonnejšia verzia je iba 4 miestna !!",
-      "dakedy bol v ponuke aj slabší a cenovo dostupnejší variant, s ešte menšou batériou aj výkonom motora"
+      "dakedy bol v ponuke aj slabší a cenovo dostupnejší variant, s ešte menšou batériou aj výkonom motora",
+      "+softvér vozidla sa neustále vyvýja a vylepšuje, od verzie 3.x je pridaných množstvo užitočných funkcií a zrejme nie je koniec. Toto nie je samozrejmosť u každej automobilky..."
     ],
     "reviews": [
       {
@@ -688,7 +690,7 @@
     "weight": "1739 - 1876",
     "bat_cooling_active": true,
     "heat_pump": true,
-    "h_p_info": null,
+    "h_p_info": "už v základnej výbave!",
     "roof_rack": true,
     "towing_device": true,
     "t_d_restriction": "brzdený / nebrzdený príves - max 750kg",
@@ -698,12 +700,12 @@
     ],
     "reviews": [
       {
-        "text": "",
-        "link": ""
+        "text": "oficiálna SK stránka modelu",
+        "link": "https://www.citroen.sk/modely/nova-c4-e-c4/elektricky.html?gclid=EAIaIQobChMImuuCp9jG_AIVWvV3Ch2W0Q48EAAYASAAEgKquPD_BwE"
       },
       {
-        "text": "",
-        "link": ""
+        "text": "nezvyčajný dlhodobý test - Techbox.sk",
+        "link": "https://www.techbox.sk/spustame-dlhodoby-test-elektromobilu-citroen-e-c4-electric-aky-tu-este-nebol/"
       }
     ]
   },
@@ -715,30 +717,30 @@
     "img_source": "./pictures/batch_honda_e.webp",
     "production": true,
     "ac_charging": {
-      "value_min": 11,
+      "value_min": 6.6,
       "value_max": null,
-      "phases_min": 3,
+      "phases_min": 1,
       "phases_max": null
     },
     "dc_charging": {
-      "value_min": 120,
-      "value_max": 135
+      "value_min": "?",
+      "value_max": null
     },
     "battery_capacity": {
-      "nominal_min": 62,
-      "nominal_max": 82,
-      "useable_min": 58,
-      "useable_max": 77
+      "nominal_min": 35.5,
+      "nominal_max": null,
+      "useable_min": 28.5,
+      "useable_max": null
     },
     "range": {
-      "WLTP_min": 429,
-      "WLTP_max": 558,
+      "WLTP_min": 210,
+      "WLTP_max": null,
       "min": 70,
       "max": 155
     },
-    "efficiency": "13.1 / 15.2",
+    "efficiency": 17.8,
     "vehicle_seats": 4,
-    "engine_power_min": 150,
+    "engine_power_min": 113,
     "engine_power_max": null,
     "AWD": false,
     "akceleration_min": 7.3,
@@ -751,21 +753,35 @@
     "towing_device": false,
     "t_d_restriction": "",
     "plus_info": [
-      "*len trojdverové a 4 miestne vozidlo!",
+      "*5 dverové, ale len 4 miestne vozidlo",
       "*kapacita batérie jasne naznačuje že auto je plánované na mestské použitie",
       "+interiér aký sa bežne nevidí a určite zaujme každého kto si tam sadne",
       "aj celý vonkajší dozajn zaujme, toto auto na ceste neprehliadnete",
       "+spätné zrkadlá formou kamery, v štandardnej výbave, tak to sa hneď tak nevidí...",
-      "zaujímavé množstvo displayov vo vnútri vozidla, ani posádka vedľa vodiča sa nebude nudiť..."
+      "zaujímavé množstvo displayov vo vnútri vozidla, ani posádka vedľa vodiča sa nebude nudiť... a k tomu skvelá hudba...",
+      "zadný náhon, široké športové pneumatiky v základe - zábava...",
+      "+vyššie výbavy majú 1500W zásuvku 230V!"
     ],
     "reviews": [
       {
-        "text": "--------",
-        "link": "https://www.vw.sk/id3/cenniky-a-katalogy"
+        "text": "oficiálna SK stránka",
+        "link": "https://www.honda.sk/cars/new/honda-e/overview.html"
       },
       {
-        "text": "---------",
-        "link": "https://www.vw.sk/id3"
+        "text": "SK katalóg pre rok 2021",
+        "link": "https://www.honda.sk/content/dam/local/slovakia/cars/katalogy/SK-katalog_Honda_e_2021.pdf"
+      },
+      {
+        "text": "cenník 01/2022", 
+          "link":"https://www.honda.sk/content/dam/local/slovakia/cars/katalogy/SK_cennik_Honda_e_01_2023.pdf"
+      },
+      {
+        "text": "videorecenzia- Michal Karpát",
+        "link": "https://www.youtube.com/watch?v=DQcWTkoWPZM"
+      },
+      {
+        "text": "videorecenzia- Motoring TA3",
+        "link": "https://www.youtube.com/watch?v=QsKRND3blOg"
       }
     ]
   },
