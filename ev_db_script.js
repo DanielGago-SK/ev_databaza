@@ -590,7 +590,7 @@ function make_modal(item_id) {
   more_info = "";
   /* ak je prvý znak '!' - text bude červený ako výstražné info, ak je znak '*' - text bude oranžový, ako obmedzenie a pod., ak '+', tak bude text zelený, ako plusová vlastnosť, výhoda, ak nie je žiadny znak, text bude normálne základný */
   if (item.plus_info.length !== 0) {
-    more_info += `<p><brands>Ďalšie zaujímavé informácie:</brands></p>`;
+    more_info += `<p><b>Ďalšie zaujímavé informácie:</b></p>`;
     for (let index = 0; index < item.plus_info.length; index++) {
       info_text = item.plus_info[index];
       c = "var(--color_txt)";
@@ -612,7 +612,7 @@ function make_modal(item_id) {
 
   reviews = "";
   if (item.reviews.length !== 0) {
-    reviews += `<p><brands>Odkazy na recenzie, články:</brands></p>`;
+    reviews += `<p><b>Odkazy na recenzie, články:</b></p>`;
     for (let index = 0; index < item.reviews.length; index++) {
       reviews += `<a href="${item.reviews[index].link}" target="_blank" rel="noopener noreferrer">${item.reviews[index].text}</a><br>`;
     }
@@ -626,25 +626,25 @@ function make_modal(item_id) {
                         <p>${item.description}</p>
                         ${production}
         <div class="line" style="border-top:1px solid gray;"></div>
-        <p><brands>Nabíjanie:</brands></p>
-        <p><brands>AC:</brands> ${ac_charging}</p>
-        <p><brands>DC:</brands> ${dc_charging}</p>
-        <p><brands>Kapacita batérie:</brands></p>
+        <p><b>Nabíjanie:</b></p>
+        <p><b>AC:</b> ${ac_charging}</p>
+        <p><b>DC:</b> ${dc_charging}</p>
+        <p><b>Kapacita batérie:</b></p>
         <p>- nominálna: ${bc_nominal}<br>
             - využiteľná: ${bc_use}</p>
-        <p><brands>Dojazd:</brands></p>
+        <p><b>Dojazd:</b></p>
         <p> WLTP: ${wltp_range} km<br>
             (Reálny dojazd v praxi, pre všetky verzie a podmienky dohromady, sa pohybuje od ${min_max_range}km!)</p>
-        <p><brands>Priemerná spotreba:</brands> ${item.efficiency}kWh/100km</p>
-        <p><brands>Počet miest:</brands> ${seats}</p>
-        <p><brands>Výkon motora:</brands> ${engine_power}kW</p>
-        <p><brands>Pohon všetkých kolies:</brands> ${awd}</p>
-        <p><brands>Zrýchlenie 0-100 km/h:</brands> ${akceleration} s</p>
-        <p><brands>Hmotnosť (prázdneho) vozidla:</brands> ${item.weight} kg</p>
-        <p><brands>Aktívny termomanažment batérie:</brands> ${cooling}</p>
-        <p><brands>Tepelné čerpadlo:</brands> ${heat_pump}</p>
-        <p><brands>Strešný nosič:</brands> ${roof_rack}</p>
-        <p><brands>Ťažné zariadenie:</brands> ${t_d}</p>
+        <p><b>Priemerná spotreba:</b> ${item.efficiency}kWh/100km</p>
+        <p><b>Počet miest:</b> ${seats}</p>
+        <p><b>Výkon motora:</b> ${engine_power}kW</p>
+        <p><b>Pohon všetkých kolies:</b> ${awd}</p>
+        <p><b>Zrýchlenie 0-100 km/h:</b> ${akceleration} s</p>
+        <p><b>Hmotnosť (prázdneho) vozidla:</b> ${item.weight} kg</p>
+        <p><b>Aktívny termomanažment batérie:</b> ${cooling}</p>
+        <p><b>Tepelné čerpadlo:</b> ${heat_pump}</p>
+        <p><b>Strešný nosič:</b> ${roof_rack}</p>
+        <p><b>Ťažné zariadenie:</b> ${t_d}</p>
         ${more_info}
         ${reviews}
         <div class="arrows"><span onclick="modal_content.scrollTo({
@@ -696,12 +696,12 @@ window.onclick = function (e) {
 function selectBrand() {
   // pracujem tu s "input_brands" - tu sa načítali všetky inputy pre značky, pri ich spracovaní z databázy
 
-  for (let brands of input_brands) {
-    brands.addEventListener("click", function () {
+  for (let b of input_brands) {
+    b.addEventListener("click", function () {
       selected_brands =
         []; /* vynuluj, naložím tam iba modely áut aktuálne vybranej značky */
       // vybral som voľbu bez filtrov!
-      if (brands.id == "no_mark") {
+      if (b.id == "no_mark") {
         // všetky ostatné možnosti deaktivuj
         input_brands.forEach((input) => (input.checked = false));
         // a len táto je teda aktívna, je jedno či sme ju aktivovoali, alebo deaktivovali, ona ako hlavná deaktivovať nejde... ona v podstate preráža všetky ostatné...
