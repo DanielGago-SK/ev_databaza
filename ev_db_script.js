@@ -135,8 +135,10 @@ async function getData(file) {
   controlFilterCheckbox();
   // keď chcem všetky vozidlá, tak treba nastaviť pole objektov pre zobrazenie všetkých vozidiel z databázy
   // neskôr budem pracovať s inými - filtrovanými poliami
-  selected_brands = database; // výber podľa značky - pri štarte všetky objekty
-  selected_filters = database; // výber podľa filtrov - pri štarte všetky objekty
+  //! funguje to korektne aj takto: selected_brands = database;, ale správne je to ako je to teraz - nevyrovnávam polia, iba do nich vkladám prvky toho druhého poľa!!
+  //! lebo občas sa v praxi stane že ak zmením potom daktoré pole tak mi zmení aj pole databázy, keďže sú "rovnaké"... tento aktuálny zápis je istota...
+  selected_brands = [...database]; // výber podľa značky - pri štarte všetky objekty
+  selected_filters = [...database]; // výber podľa filtrov - pri štarte všetky objekty
   // zavolaj funkciu čo vykreslí zoznam na obrazovku
   // createVehicleArticles() - netreba to volať samostatne, volá si to potom nastavenie paginácie samo. tú funkciu volám aj vždy po tom ako sa zmenia niektoré filtre...
   // nasledujúce riadky kódu nulujú filtre pri každom reloade stránky... ak to nebolo, tak zostávali "checkbox" občas atívne označené ale v podstate nespracované...
