@@ -406,9 +406,9 @@
       "value_max": null
     },
     "battery_capacity": {
-      "nominal_min": 21.3,
+      "nominal_min": 23.8,
       "nominal_max": null,
-      "useable_min": 23.8,
+      "useable_min": 21.3,
       "useable_max": null
     },
     "range": {
@@ -425,7 +425,7 @@
     "akceleration_min": 10.2,
     "akceleration_max": null,
     "weight": 1160,
-    "bat_cooling_active": false,
+    "bat_cooling_active": true,
     "heat_pump": false,
     "h_p_info": null,
     "roof_rack": false,
@@ -435,7 +435,12 @@
       "!iba pomalé AC nabíjanie!",
       "!oficiálne servisy nemajú dokumentáciu na servisovanie týchto vozidiel keďže nebolo určené na EU trh!"
     ],
-    "reviews": []
+    "reviews": [
+      {
+        "text": "Elektromobil.tv - aj info o špecifickosti dielov a podobne!",
+        "link":"https://www.youtube.com/watch?v=NutEUYNJtdY&ab_channel=ElektromobilTV"
+      }
+    ]
   },
   {
     "start": "------------------------------------------------------------------",
