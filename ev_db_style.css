@@ -704,6 +704,8 @@ ale to všetko sa tak generuje až v JS ku... */
   position: fixed;
   top: 0;
   left: 0;
+  max-height: 100vh;
+  max-height: 100svh;
   max-height: 100dvh;
   overflow: hidden;
   width: 100%;
@@ -711,7 +713,7 @@ ale to všetko sa tak generuje až v JS ku... */
 }
 
 #modal_content {
-  /* samotný obsah modal eleentu - zobrazený artikel */
+  /* samotný obsah modal elementu - zobrazený artikel */
   z-index: 1000;
   position: relative;
   -webkit-transform: scale(0);
@@ -725,7 +727,9 @@ ale to všetko sa tak generuje až v JS ku... */
   margin: 8vh auto;
   max-width: calc(600px + 2rem); /* obrázky sú presne 600px */
   padding: 0 1rem;
-  height: 85dvh;
+  height: 88vh;
+  height: 88svh;
+  height: 88dvh;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
