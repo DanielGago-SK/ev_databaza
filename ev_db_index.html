@@ -199,14 +199,16 @@
                 </svg>
                 <div class="brand_select">
                     <h3>Ktoré značky preferuješ?</h3>
-                    <span class="info_btn"
-                        onclick="document.getElementById('filtering_info').classList.toggle('show');">(Klikni
+                    <span class="info_btn" onclick="document.getElementById('f_i_1').classList.toggle('show');">(Klikni
                         pre viac informácií)</span>
-                    <p class="filtering_info" id="filtering_info"
-                        onclick="document.getElementById('filtering_info').classList.remove('show');">
-                        (Je možné vybrať aj viaceré značky. Číslo pri značke označuje celkový počet vozidiel danej
-                        značky v databáze. Ak
-                        to aktuálne filtre nedovolia, tak nemusia byť vždy všetky zobrazené&nbsp;!)</p>
+                    <div class="filtering_info" id="f_i_1"
+                        onclick="document.getElementById('f_i_1').classList.remove('show');">
+                        <p>
+                            Je možné vybrať aj viaceré značky. Číslo pri značke označuje celkový počet vozidiel danej
+                            značky v databáze. Ak
+                            to aktuálne filtre nedovolia, tak nemusia byť vždy všetky zobrazené&nbsp;!
+                        </p>
+                    </div>
                     <div id="brand_select"><!-- obsah generuje JS --></div>
                 </div>
 
@@ -254,21 +256,26 @@
                 <section class="filters">
                     <h3>Vyber filtre pre vlastnosti (aj kombinácie sú možné):</h3>
                     <p style="margin-top: 0.35rem;"><span class="info_btn"
-                            onclick="document.getElementById('filters_info').classList.toggle('show');">(Klikni
+                            onclick="document.getElementById('f_i_2').classList.toggle('show');">(Klikni
                             pre viac informácií)</span></p>
-                    <p class="filtering_info" id="filters_info"
-                        onclick="document.getElementById('filters_info').classList.remove('show');">(Filter zobrazí aj
-                        vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
-                        napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna, teda
-                        možná,
-                        ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť
-                        presnejšie
-                        ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie modely,
-                        kde je
-                        istota že daná vlastnosť naozaj nie je.) <br>
-                        <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
-                            nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky&nbsp;!</b>
-                    </p>
+                    <div class="filtering_info" id="f_i_2"
+                        onclick="document.getElementById('f_i_2').classList.remove('show');">
+                        <p>
+                            Filter zobrazí aj
+                            vozidlá ktoré dané vlastnosti spĺňajú iba čiastočne,
+                            napríklad ju má iba jeden z vyrábaných variantov. Alebo aj keď je daná vlastnosť otázna,
+                            teda
+                            možná,
+                            ale nie istá, a teda nie je vylúčená. V detailoch vozidla je potom možnosť si to pozrieť
+                            presnejšie
+                            ako to je (napríklad ťažné zariadenia, strešné nosiče). Nezobrazuje iba vyslovene tie
+                            modely,
+                            kde je
+                            istota že daná vlastnosť naozaj nie je. <br>
+                            <b>Ak sa použije kombinácia filtrov, tak filtrovanie je
+                                nastavené tak, že zobrazené vozidlá musia spĺňať všetky podmienky&nbsp;!</b>
+                        </p>
+                    </div>
                     <label class="check_box">žiadny filter, zobrazujem všetko<input type="checkbox" id="filter_off">
                         <span class="checkmark"></span></label>
                     <br>

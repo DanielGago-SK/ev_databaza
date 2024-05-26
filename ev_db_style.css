@@ -331,7 +331,8 @@ todo len dočasne - info že stránka je vo výstavbe */
   margin: 0.75rem 0 0.5rem 0;
 }
 
-.brand_select .filtering_info {
+/* spoločný kód pre obe nápovedy! */
+.filtering_info {
   /* popis ako fungujú filtre */
   position: absolute;
   background-color: rgb(221, 221, 221);
@@ -344,24 +345,31 @@ todo len dočasne - info že stránka je vo výstavbe */
   padding: 0rem;
   border-radius: 14px;
   max-height: 0;
-  -webkit-transition: max-height 0.3s ease-in-out,
-    padding 0.05s 0.25s ease-in-out;
-  -o-transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
-  -webkit-transition: max-height 0.3s ease-in-out,
-    padding 0.05s 0.25s ease-in-out;
-  transition: max-height 0.3s ease-in-out, padding 0.05s 0.25s ease-in-out;
+  -webkit-transition: max-height 0.5s linear;
+  -o-transition: max-height 0.5s linear;
+  transition: max-height 0.5s linear;
   overflow-y: hidden;
   font-weight: normal;
   font-size: 1rem;
   font-style: italic;
   margin-bottom: 0.35rem;
 }
-.brand_select .show {
-  -webkit-transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
-  -o-transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
-  transition: max-height 0.3s ease-in-out, padding 0.05s ease-in-out;
-  padding: 1rem;
-  max-height: 250px;
+
+.filtering_info p {
+  color: white;
+  padding: 1em;
+}
+
+.filtering_info b {
+  color: rgb(0, 0, 127);
+}
+
+.show {
+  -webkit-transition: max-height 1.5s linear;
+  -o-transition: max-height 1.5s linear;
+  transition: max-height 1.5s linear;
+  max-height: 100%;
+  cursor: pointer;
 }
 
 .brand_select .info_btn {
@@ -471,47 +479,6 @@ todo len dočasne - info že stránka je vo výstavbe */
   font-size: 1rem;
   font-style: italic;
   color: var(--color_primary);
-}
-
-.filters .filtering_info {
-  /* popis ako fungujú filtre */
-  position: absolute;
-  background-color: var(--color_primary);
-  color: white;
-  z-index: 100;
-  max-width: calc(800px - 2rem);
-  width: calc(100% - 4rem);
-  margin-inline: 1rem;
-  padding: 0rem;
-  border-radius: 14px;
-  max-height: 0;
-  -webkit-transition: max-height 0.5s ease-in-out,
-    padding 0.05s 0.45s ease-in-out;
-  -o-transition: max-height 0.5s ease-in-out, padding 0.05s 0.45s ease-in-out;
-  -webkit-transition: max-height 0.5s ease-in-out,
-    padding 0.05s 0.37s ease-in-out;
-  -o-transition: max-height 0.5s ease-in-out, padding 0.05s 0.37s ease-in-out;
-  transition: max-height 0.5s ease-in-out, padding 0.05s 0.37s ease-in-out;
-  overflow-y: hidden;
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.filtering_info b {
-  color: rgb(0, 0, 127);
-}
-
-.filters span {
-  font-weight: normal;
-  font-size: 1rem;
-}
-
-.filters .show {
-  -webkit-transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
-  -o-transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
-  transition: max-height 0.5s ease-in-out, padding 0.05s ease-in-out;
-  padding: 1rem;
-  max-height: 700px;
 }
 
 /*** sekcia - filter info */
