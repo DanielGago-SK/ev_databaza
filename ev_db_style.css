@@ -76,14 +76,41 @@ h3 {
 
 /***  Hlavička */
 header {
+  position: relative;
   padding: 5%;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1000px) {
+  header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+
   header img {
-    width: 80%;
-    max-width: 210px;
-    display: block !important;
+    display: inline-block !important;
+    max-height: 100%;
+    max-width: 100%;
+    height: min(150px, 20vw);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  header img {
+    /*width: 80%;
+    max-width: 210px;*/
+    width: min(80%, 210px);
+    height: auto;
     margin-inline: auto;
   }
 }
