@@ -36,7 +36,7 @@ let curent_width =
   window.innerWidth ||
   document.documentElement.clientWidth ||
   document.body.clientWidth;
-if (curent_width <= 600) {
+/*if (curent_width <= 600) {
   pagination_number = 3;
 } // mobil...
 else if (curent_width <= 900) {
@@ -47,7 +47,16 @@ else if (curent_width <= 1199) {
 } // PC - po 3 kusy na riadok...
 else {
   pagination_number = 12;
-} // PC - po 4 kusy na riadok
+} // PC - po 4 kusy na riadok*/
+
+/* skrátený zápis: */
+curent_width <= 600 
+? pagination_number = 3
+: curent_width <=900 
+? pagination_number = 6
+: curent_width <= 1199 
+? pagination_number = 9
+: pagination_number = 12;
 // a ešte označ ako vybraný potrebný blok pre výber počtu položiek na stránku
 document
   .querySelector(`[data-pgn = "${pagination_number}"]`)
@@ -77,14 +86,16 @@ for (let index = 0; index < h1_string.length; index++) {
 // a idem postupne meniť farbu span písmen - efekt akoby postupného písania textu
 const spans = document.querySelectorAll("#h1_txt span");
 let i = 0;
+let time = 30;
 setTimeout(typeWriter, 500);
 // funkcia s postupným časovaním mení farby jednotlivých písmen - sama sa opätovne volá kým nie je napísaný komplet text
 function typeWriter() {
-  if (i < spans.length / 2) {
+  if (i < spans.length) {
     spans[i].style.color = "black";
-    spans[spans.length - i - 1].style.color = "black";
+    if (spans[i].innerText == " " || spans[i].innerHTML == "<br>") time = 300;
     i++;
-    setTimeout(typeWriter, 30);
+    setTimeout(typeWriter, time);
+    time = 30;
   }
 }
 

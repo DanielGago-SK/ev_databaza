@@ -1,6 +1,16 @@
 @charset "utf-8";
 
 /*** dajaké globálne / systémové nastavenia na úvod */
+
+:root {
+  --text_width: 800px;
+  /* použité farby */
+  --color_txt: rgb(51, 51, 51);
+  --color_primary: rgb(0, 140, 255);
+  --color_hell: rgb(118, 193, 255);
+  --color_warning: #ff7300;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,15 +20,6 @@
   font-family: Helvetica, sans-serif;
   line-height: 1.75rem;
   color: var(--color_txt);
-}
-
-:root {
-  --text_width: 800px;
-  /* použité farby */
-  --color_txt: rgb(51, 51, 51);
-  --color_primary: rgb(0, 140, 255);
-  --color_hell: rgb(118, 193, 255);
-  --color_orange: #ff7300;
 }
 
 /* ! toto musí byť, aby mi pri zastavení skrolovania počas modal okna neposúvalo obsah na kraj do strany... rušil sa vtedy margin auto pre šírku stránky...*/
@@ -118,7 +119,7 @@ todo len dočasne - info že stránka je vo výstavbe */
   max-width: 40ch;
   margin: 1rem auto 0 auto;
   color: black;
-  background-color: var(--color_orange);
+  background-color: var(--color_warning);
   text-align: center;
   font-size: 1.5rem;
   overflow-x: hidden;
@@ -745,7 +746,7 @@ todo len dočasne, vymaž potom */
   top: 2rem;
   text-align: center;
   color: black;
-  background-color: var(--color_orange);
+  background-color: var(--color_warning);
   margin-top: -1rem;
   margin-bottom: 0.5rem;
   z-index: 10;
@@ -761,10 +762,10 @@ todo len dočasne, vymaž potom */
     color: black;
   }
   60% {
-    color: var(--color_orange);
+    color: var(--color_warning);
   }
   99% {
-    color: var(--color_orange);
+    color: var(--color_warning);
   }
   100% {
     color: black;
@@ -779,10 +780,10 @@ todo len dočasne, vymaž potom */
     color: black;
   }
   60% {
-    color: var(--color_orange);
+    color: var(--color_warning);
   }
   99% {
-    color: var(--color_orange);
+    color: var(--color_warning);
   }
   100% {
     color: black;
@@ -792,7 +793,7 @@ todo len dočasne, vymaž potom */
   content: "";
   width: calc(100% + 2rem + 1px);
   height: 100%;
-  background-color: var(--color_orange);
+  background-color: var(--color_warning);
   position: absolute;
   top: 0;
   left: -1rem;
