@@ -1,11 +1,10 @@
 [
   {
     "version": "14.1.2023",
-    "note": "tieto prvé dva riadky tu musia byť vždy ako prvé - je tu aktuálna verzia databázy - posledná zmena!!!"
+    "note": "tieto prvé dva riadky tu musia byť vždy ako prvé - je tu aktuálna verzia databázy - posledná zmena!!! Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte. Poloźka \"start\" je iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie!" 
   },
   {
-    "new_item_description": "Ak pridávam novú položku, tak v podstate to ide kdekoľvek, ideálne asi na druhé miesto, aby bola ľahko po ruke na dodatočné editovanie ešte.",
-    "start": "iba dizajnový prvok, aby som lepšie videl kde je začiatok položky ak dačo hľadám na editovanie! -------------------------------------------------------------------------",
+    "start": "-------------------------------------------------------------------------",
     "descripton_popis_štruktúry_databázy": "*/ (len) takto napríklad môžem napísať nápovedu / komentár do json súboru... tu v prvej položke sú občas komentované možné zápisy!! json inak štandardné komentáre nepodporuje... /*",
     "brand": "VW",
     "model": "VW e-Up 1. generácia",
