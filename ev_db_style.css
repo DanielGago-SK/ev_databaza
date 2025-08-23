@@ -533,9 +533,11 @@ todo len dočasne - info že stránka je vo výstavbe */
 .result {
   position: relative;
   padding: 1rem 0;
-  /* použijem grid, ale aj flex by mohol byť, ba dokonca by umožnil ľahko dať obsah posledného a / alebo nie komplet plného riadku na stred... */
+  /* použijem grid, lebo počet blokov je nestabilný, a flex by to tak dobre nezvládol */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* ! Pozor, tu treba takto primitívne a tvrdo definovať počty blokov na riaok pre jednotlivé rozlíšenia, lebo automatika /auto-fit - viď nasledujúci riadok/ nefunguje ak sa mení počet blokov v riadku, respektíve ak ich je menej ako sa tam očakáva pre dané rozlíšenie tak to robí neporiadok... */
+  /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
   grid-template-rows: auto;
   -webkit-column-gap: 1rem;
   -moz-column-gap: 1rem;
